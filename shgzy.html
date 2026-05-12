@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>测测你的桌游MBTI - 酸黄瓜桌游俱乐部</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 欢迎页 */
+        .welcome-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .welcome-page h1 {
+            color: #2e7d32;
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .welcome-page .subtitle {
+            color: #558b2f;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn-start {
+            background: #66bb6a;
+            color: #fff;
+            border: none;
+            padding: 16px 60px;
+            font-size: 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 187, 106, 0.4);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .btn-start:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(102, 187, 106, 0.3);
+        }
+
+        /* 测试页 */
+        .quiz-page {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(46, 125, 50, 0.15);
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #81c784;
+            border-radius: 3px;
+            transition: width 0.3s;
+            width: 0%;
+        }
+
+        .question-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            animation: slideUp 0.4s ease;
+        }
+
+        .question-num {
+            color: #66bb6a;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: #f1f8e9;
+            border: 2px solid transparent;
+            padding: 18px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1.5;
+            position: relative;
+            overflow: hidden;
+            color: #33691e;
+        }
+
+        .option-btn:hover {
+            background: #dcedc8;
+            border-color: #81c784;
+        }
+
+        .option-btn:active {
+            transform: scale(0.97);
+            background: #c5e1a5;
+            border-color: #66bb6a;
+        }
+
+        /* 结果页 */
+        .result-page {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .result-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 35px 25px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .mbti-type {
+            font-size: 52px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #66bb6a 0%, #2e7d32 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .personality-title {
+            font-size: 22px;
+            color: #388e3c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .catchphrase {
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+            padding: 0 10px;
+            line-height: 1.6;
+        }
+
+        .recommend-section {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .recommend-section h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .game-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #a5d6a7 0%, #81c784 100%);
+            color: #1b5e20;
+            padding: 10px 16px;
+            border-radius: 25px;
+            margin: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .share-section {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-share {
+            width: 100%;
+            background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 12px;
+            box-shadow: 0 5px 20px rgba(129, 199, 132, 0.4);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-share:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 10px rgba(129, 199, 132, 0.3);
+        }
+
+        .btn-copy {
+            width: 100%;
+            background: #fff;
+            color: #388e3c;
+            border: 2px solid #81c784;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-copy:active {
+            transform: scale(0.97);
+            background: #f1f8e9;
+        }
+
+        .shop-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(46, 125, 50, 0.08);
+            border-radius: 16px;
+            color: #2e7d32;
+            text-align: center;
+            width: 100%;
+        }
+
+        .shop-info h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .shop-info p {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 欢迎页 -->
+        <div class="welcome-page" id="welcomePage">
+            <div class="logo">
+                <img src="logo.jpg" alt="酸黄瓜桌游">
+            </div>
+            <h1>测测你的桌游MBTI</h1>
+            <p class="subtitle">
+                你是天生的指挥官，还是隐藏的规则解构者？<br>
+                10道题，找到最适合你的那款桌游。
+            </p>
+            <button class="btn-start" onclick="startQuiz()">开始测试</button>
+        </div>
+
+        <!-- 测试页 -->
+        <div class="quiz-page" id="quizPage">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="question-card" id="questionCard">
+                <div class="question-num" id="questionNum">第 1/10 题</div>
+                <div class="question-text" id="questionText">题目内容</div>
+                <div class="options">
+                    <button class="option-btn" id="optionA" onclick="selectOption('A')"></button>
+                    <button class="option-btn" id="optionB" onclick="selectOption('B')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果页 -->
+        <div class="result-page" id="resultPage">
+            <div class="result-card" id="resultCard">
+                <div class="mbti-type" id="mbtiType">INTJ</div>
+                <div class="personality-title" id="personalityTitle">布局控</div>
+                <div class="catchphrase" id="catchphrase">"这步我算了5分钟，你忍一下"</div>
+
+                <div class="recommend-section">
+                    <h3>🎮 推荐桌游</h3>
+                    <div id="gameTags"></div>
+                </div>
+            </div>
+
+            <div class="share-section">
+                <button class="btn-share" onclick="shareResult()">📤 分享结果</button>
+                <button class="btn-copy" onclick="copyText()">📋 复制朋友圈文案</button>
+                <button class="btn-copy" onclick="location.reload()" style="border-color:#ccc; color:#999;">🔄 再测一次</button>
+            </div>
+
+            <div class="shop-info">
+                <h4>🥒 酸黄瓜桌游俱乐部</h4>
+                <p>杭州 · 开了6年的桌游店<br>13:00-23:00 营业中</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // 禁止右键、F12、Ctrl+Shift+I/J/C、Ctrl+U
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'u' || e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+
+        // 题库：每个维度6道题，共24道
+        const allQuestions = [
+            // === E/I 维度（外向/内向）===
+            {
+                text: "周末组局，你更想？",
+                A: { text: "拉满人，越热闹越好", scores: { E: 1 } },
+                B: { text: "叫一两个最熟的，安静玩", scores: { I: 1 } }
+            },
+            {
+                text: "桌游局上，你通常？",
+                A: { text: "主动带节奏，话最多", scores: { E: 1 } },
+                B: { text: "默默算牌，偶尔补刀", scores: { I: 1 } }
+            },
+            {
+                text: "组不到人时，你会？",
+                A: { text: "去店里认识新朋友", scores: { E: 1 } },
+                B: { text: "自己 solo 一局也挺好", scores: { I: 1 } }
+            },
+            {
+                text: "输了一局后，你更想？",
+                A: { text: "立刻开下一局，越战越勇", scores: { E: 1 } },
+                B: { text: "先缓缓，复盘一下再玩", scores: { I: 1 } }
+            },
+            {
+                text: "新游戏上手，你更喜欢？",
+                A: { text: "先听别人讲一遍规则", scores: { E: 1 } },
+                B: { text: "自己默默看说明书", scores: { I: 1 } }
+            },
+            {
+                text: "一场3小时的桌游，中场休息时你？",
+                A: { text: "拉着大家聊天八卦", scores: { E: 1 } },
+                B: { text: "找个角落刷手机", scores: { I: 1 } }
+            },
+            // === S/N 维度（实感/直觉）===
+            {
+                text: "选游戏时，你更在意？",
+                A: { text: "配件手感、规则具体能干什么", scores: { S: 1 } },
+                B: { text: "世界观、故事感、想象力", scores: { N: 1 } }
+            },
+            {
+                text: "玩游戏时，你更爱？",
+                A: { text: "看着眼前的资源和行动", scores: { S: 1 } },
+                B: { text: "想下一步、下下步的可能性", scores: { N: 1 } }
+            },
+            {
+                text: "看到一款新游戏，你最先关注？",
+                A: { text: "配件质量、版图大小", scores: { S: 1 } },
+                B: { text: "玩法创新、故事背景", scores: { N: 1 } }
+            },
+            {
+                text: "桌游对你来说更像？",
+                A: { text: "一场精确的数学竞赛", scores: { S: 1 } },
+                B: { text: "一段沉浸式的冒险", scores: { N: 1 } }
+            },
+            {
+                text: "评价一局游戏好不好玩，你更在意？",
+                A: { text: "过程是否流畅、有没有卡手", scores: { S: 1 } },
+                B: { text: "有没有打出神来之笔", scores: { N: 1 } }
+            },
+            {
+                text: "你更喜欢的游戏类型是？",
+                A: { text: "规则明确、算分清晰", scores: { S: 1 } },
+                B: { text: "开放度高、有多种可能性", scores: { N: 1 } }
+            },
+            // === T/F 维度（思考/情感）===
+            {
+                text: "游戏关键时刻，你倾向？",
+                A: { text: "理性计算最优解，输赢第一", scores: { T: 1 } },
+                B: { text: "照顾大家体验，氛围第一", scores: { F: 1 } }
+            },
+            {
+                text: "你更希望游戏？",
+                A: { text: "有明确的胜负，我要赢", scores: { T: 1 } },
+                B: { text: "大家都能参与，过程开心", scores: { F: 1 } }
+            },
+            {
+                text: "有人破坏你精心布局时？",
+                A: { text: "算了，游戏而已", scores: { F: 1 } },
+                B: { text: "记仇，这局我必须赢回来", scores: { T: 1 } }
+            },
+            {
+                text: "新手问你规则，你？",
+                A: { text: "快速讲完，赶紧开", scores: { T: 1 } },
+                B: { text: "慢慢教，确保他懂了", scores: { F: 1 } }
+            },
+            {
+                text: "游戏结束后，你更想？",
+                A: { text: "复盘胜负手，分析关键点", scores: { T: 1 } },
+                B: { text: "聊聊刚才的搞笑场面", scores: { F: 1 } }
+            },
+            {
+                text: "队友失误导致输掉比赛，你？",
+                A: { text: "指出他哪里下错了", scores: { T: 1 } },
+                B: { text: "没事，下次再来", scores: { F: 1 } }
+            },
+            // === J/P 维度（判断/知觉）===
+            {
+                text: "开局前，你？",
+                A: { text: "先想清楚策略，按计划走", scores: { J: 1 } },
+                B: { text: "边玩边想，随机应变", scores: { P: 1 } }
+            },
+            {
+                text: "你更喜欢？",
+                A: { text: "规则确定，按规矩来", scores: { J: 1 } },
+                B: { text: "变数多，每局都不一样", scores: { P: 1 } }
+            },
+            {
+                text: "去桌游店前，你通常？",
+                A: { text: "提前想好要玩什么", scores: { J: 1 } },
+                B: { text: "到了再说，看心情", scores: { P: 1 } }
+            },
+            {
+                text: "游戏进行到一半，有人提议换规则？",
+                A: { text: "不行，按原规则来", scores: { J: 1 } },
+                B: { text: "可以啊，试试新的", scores: { P: 1 } }
+            },
+            {
+                text: "你更享受？",
+                A: { text: "按照计划一步步赢下来", scores: { J: 1 } },
+                B: { text: "最后关头逆袭翻盘", scores: { P: 1 } }
+            },
+            {
+                text: "一局游戏结束后，你会？",
+                A: { text: "把token一个个放回盒里", scores: { J: 1 } },
+                B: { text: "一把扫进盒子完事", scores: { P: 1 } }
+            }
+        ];
+
+        // 人格标签与金句
+        const personalityBase = {
+            'INTJ': { title: '布局控', quote: '这步我算了5分钟，你忍一下' },
+            'INTP': { title: '规则解构者', quote: '让我再看一眼终局计分' },
+            'ENTJ': { title: '指挥官', quote: '听我的，这把这么打' },
+            'ENTP': { title: '搅局王', quote: '我骗你的，但你可以信' },
+            'INFJ': { title: '团队大脑', quote: '牺牲我一个，成全大家' },
+            'INFP': { title: '故事沉浸者', quote: '我在角色里走不出来了' },
+            'ENFJ': { title: '气氛组长', quote: '来，新人我教你' },
+            'ENFP': { title: '快乐小狗', quote: '这个好玩！再玩一局！' },
+            'ISTJ': { title: '裁判型玩家', quote: '规则第7.3条不是这样的' },
+            'ISFJ': { title: '辅助担当', quote: '没事，我救你' },
+            'ESTJ': { title: '局长型玩家', quote: '别插话，按顺序来' },
+            'ESFJ': { title: '社交粘合剂', quote: '大家一起玩才开心' },
+            'ISTP': { title: '冷面杀手', quote: '废话少说，开干' },
+            'ISFP': { title: '艺术体验派', quote: '这个token好好看啊' },
+            'ESTP': { title: '赌徒型玩家', quote: '梭哈，信我' },
+            'ESFP': { title: '派对之王', quote: '哈哈哈哈哈哈！' }
+        };
+
+        // 每个MBTI对应的桌游池（从清单中选取）
+        const gamePools = {
+            'INTJ': ['灵迹岛', '重塑火星', '奥丁的盛宴', '历史巨轮：人类文明新篇章', '镰刀战争', '伯明翰', '神秘大地', '农场主', '方舟动物园', '勃艮第城堡：豪华版', '大西部之路（带北方扩）', '康考迪娅', '领国者：带领你的阶级迈向胜利', '丘吉尔', '冷战热斗'],
+            'INTP': ['奥丁的盛宴', '历史巨轮：人类文明新篇章', '神秘大地', '农场主', '伯明翰', '重塑火星', '灵迹岛', '发明简史：伟大创意的演化', '殖民火星（假设有类似）', '伯明翰'],
+            'ENTJ': ['领国者：带领你的阶级迈向胜利', '镰刀战争', '旭日战魂录', '冷战热斗', '丘吉尔', '三国：乱世枭雄', '战争之匣', '复仇女神号', '复仇女神号：反击', '三国杀'],
+            'ENTP': ['诺丁汉警长（第二版）', '政变疑云', '风声：典藏版', '以鹅传鹅', '狼人真言', '抵抗组织', '政变疑云：叛军G54', '阿瓦隆2：亚瑟传奇'],
+            'INFJ': ['瘟疫危机：浪潮汹涌', '灵笼：猎荒使命', '深海谍影', '瘟疫危机', '禁闭岛（如有）', 'Pandemic系列'],
+            'INFP': ['诡镇奇谈：卡牌版', '忘海传记', '沉睡的神祇', '骸骨险境', '疯狂诡宅：第二版', '荒野冒险家', '魔戒：中州征途', '魔戒中州：对决'],
+            'ENFJ': ['传情画意', '行动代号', '独家暗语', '语破天机', '猜心俱乐部', '传情画意：欢乐今宵版'],
+            'ENFP': ['行动代号', '哈铃果铃', 'UNO', '骆驼大赛', '东京高速公路', '动物农场', '哈铃果铃'],
+            'ISTJ': ['璀璨宝石', '七大奇迹：对决', '铁路环游', '拼布', '拉密', '方格都市', '卡坦岛', '卡卡颂：大盒版'],
+            'ISFJ': ['瘟疫危机：浪潮汹涌', '灵笼：猎荒使命', '猫与花毯', '萌犬公园', '熊猫戏梦', '瘟疫危机'],
+            'ESTJ': ['铁路环游', '电力公司', '快餐连锁大亨', '伯明翰', '奥地利大饭店', '汉萨同盟：大盒版'],
+            'ESFJ': ['传情画意', '行动代号', '独家暗语', '语破天机', '哈铃果铃', '行动代号', '传情画意：欢乐今宵版'],
+            'ISTP': ['七大奇迹：对决', '璀璨宝石：对决', '无双对决', '战争之匣', '拼布艺术', '王权骰铸（第一季+第二季+冒险+漫威）'],
+            'ISFP': ['展翅翱翔', '花见小路', '花火', '印象画语', '画物语', 'Dixit', '花见小路'],
+            'ESTP': ['拉斯维加斯：豪华版', '马尼拉', '骆驼大赛', '赌命大赛', '印加宝藏', '拉斯维加斯'],
+            'ESFP': ['哈铃果铃', 'UNO', '行动代号', '传情画意', '骆驼大赛', '德国蟑螂', '脏小猪']
+        };
+
+        let questions = [];
+        let currentQuestion = 0;
+        let scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+        let currentMBTI = '';
+
+        // 随机打乱数组
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // 从游戏池中随机选2个不重复的
+        function pickRandomGames(pool) {
+            const shuffled = shuffle(pool);
+            return [shuffled[0], shuffled[1]];
+        }
+
+        function startQuiz() {
+            // 每次开始都从题库中随机抽取10道题
+            questions = shuffle(allQuestions).slice(0, 10);
+            currentQuestion = 0;
+            scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+            document.getElementById('welcomePage').style.display = 'none';
+            document.getElementById('quizPage').style.display = 'flex';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('questionNum').textContent = `第 ${currentQuestion + 1}/10 题`;
+            document.getElementById('questionText').textContent = q.text;
+            document.getElementById('optionA').textContent = 'A. ' + q.A.text;
+            document.getElementById('optionB').textContent = 'B. ' + q.B.text;
+
+            const progress = ((currentQuestion) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            // 重新触发动画
+            const card = document.getElementById('questionCard');
+            card.style.animation = 'none';
+            setTimeout(() => card.style.animation = 'slideUp 0.4s ease', 10);
+        }
+
+        function selectOption(choice) {
+            const q = questions[currentQuestion];
+            const selected = choice === 'A' ? q.A : q.B;
+
+            for (let key in selected.scores) {
+                scores[key] += selected.scores[key];
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            const ei = scores.E >= scores.I ? 'E' : 'I';
+            const sn = scores.S >= scores.N ? 'S' : 'N';
+            const tf = scores.T >= scores.F ? 'T' : 'F';
+            const jp = scores.J >= scores.P ? 'J' : 'P';
+            currentMBTI = ei + sn + tf + jp;
+
+            const base = personalityBase[currentMBTI];
+            // 从游戏池中随机选2个
+            const games = pickRandomGames(gamePools[currentMBTI]);
+
+            document.getElementById('mbtiType').textContent = currentMBTI;
+            document.getElementById('personalityTitle').textContent = base.title;
+            document.getElementById('catchphrase').textContent = '"' + base.quote + '"';
+
+            const gameTags = document.getElementById('gameTags');
+            gameTags.innerHTML = '';
+            games.forEach(game => {
+                const tag = document.createElement('span');
+                tag.className = 'game-tag';
+                tag.textContent = game;
+                gameTags.appendChild(tag);
+            });
+
+            document.getElementById('quizPage').style.display = 'none';
+            document.getElementById('resultPage').style.display = 'flex';
+        }
+
+        function shareResult() {
+            const base = personalityBase[currentMBTI];
+            const gameTags = document.querySelectorAll('.game-tag');
+            const games = Array.from(gameTags).map(tag => tag.textContent);
+            const text = `我的桌游MBTI是【${currentMBTI}·${base.title}】！\n推荐桌游：${games.join('、')}\n"${base.quote}"\n\n来测测你的→`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: '测测你的桌游MBTI',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                showToast('请截图分享朋友圈');
+                setTimeout(() => {
+                    document.getElementById('resultCard').style.border = '3px dashed #81c784';
+                }, 100);
+                setTimeout(() => {
+                    document.getElementById('resultCard').style.border = 'none';
+                }, 3000);
+            }
+        }
+
+        function copyText() {
+            const base = personalityBase[currentMBTI];
+            const gameTags = document.querySelectorAll('.game-tag');
+            const games = Array.from(gameTags).map(tag => tag.textContent);
+            const text = `我的桌游MBTI是【${currentMBTI}·${base.title}】！\n推荐桌游：${games.join('、')}\n"${base.quote}"\n\n📍酸黄瓜桌游俱乐部\n⏰13:00-23:00\n杭州·开了6年的桌游店\n\n#桌游MBTI #酸黄瓜桌游俱乐部`;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('文案已复制，快去发朋友圈！');
+                });
+            } else {
+                showToast('请长按截图保存');
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2000);
+        }
+    </script>
+</body>
+</html>
