@@ -58,6 +58,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: bounceIn 1s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
         }
 
         .logo img {
@@ -65,7 +66,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center top;
-            transform: scale(2.0) translateY(14%);
+            transform: scale(2.0) translateY(12%);
         }
 
         .welcome-page h1 {
@@ -73,6 +74,8 @@
             font-size: 28px;
             margin-bottom: 15px;
             text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.3s forwards;
         }
 
         .welcome-page .subtitle {
@@ -80,6 +83,8 @@
             font-size: 16px;
             margin-bottom: 40px;
             line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
         }
 
         .btn-start {
@@ -94,6 +99,28 @@
             box-shadow: 0 5px 20px rgba(102, 187, 106, 0.4);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.7s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-start::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-start:active::after {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-start:active {
@@ -120,10 +147,11 @@
 
         .progress-fill {
             height: 100%;
-            background: #81c784;
+            background: linear-gradient(90deg, #81c784, #66bb6a);
             border-radius: 3px;
-            transition: width 0.3s;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             width: 0%;
+            box-shadow: 0 0 8px rgba(102, 187, 106, 0.5);
         }
 
         .question-card {
@@ -132,6 +160,19 @@
             padding: 30px 25px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             animation: slideUp 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #81c784, transparent);
+            animation: shimmer 2s infinite;
         }
 
         .question-num {
@@ -139,6 +180,15 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .question-num::before {
+            content: '🎲';
+            font-size: 16px;
+            animation: shake 2s infinite;
         }
 
         .question-text {
@@ -170,9 +220,29 @@
             color: #33691e;
         }
 
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(129, 199, 132, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .option-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
         .option-btn:hover {
             background: #dcedc8;
             border-color: #81c784;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(129, 199, 132, 0.3);
         }
 
         .option-btn:active {
@@ -199,6 +269,7 @@
             text-align: center;
             box-shadow: 0 15px 50px rgba(0,0,0,0.08);
             margin-bottom: 25px;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .mbti-type {
@@ -209,6 +280,7 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
             letter-spacing: 2px;
+            animation: popIn 0.5s ease 0.2s both;
         }
 
         .personality-title {
@@ -216,6 +288,7 @@
             color: #388e3c;
             font-weight: bold;
             margin-bottom: 15px;
+            animation: fadeInUp 0.5s ease 0.4s both;
         }
 
         .catchphrase {
@@ -225,11 +298,13 @@
             margin-bottom: 25px;
             padding: 0 10px;
             line-height: 1.6;
+            animation: fadeInUp 0.5s ease 0.6s both;
         }
 
         .recommend-section {
             text-align: left;
             margin-top: 20px;
+            animation: fadeInUp 0.5s ease 0.8s both;
         }
 
         .recommend-section h3 {
@@ -250,11 +325,13 @@
             margin: 5px;
             font-size: 14px;
             font-weight: bold;
+            animation: popIn 0.4s ease both;
         }
 
         .share-section {
             width: 100%;
             margin-top: 10px;
+            animation: fadeInUp 0.5s ease 1s both;
         }
 
         .btn-share {
@@ -270,6 +347,26 @@
             margin-bottom: 12px;
             box-shadow: 0 5px 20px rgba(129, 199, 132, 0.4);
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-share::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-share:active::after {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-share:active {
@@ -289,6 +386,26 @@
             cursor: pointer;
             margin-bottom: 12px;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-copy::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(129, 199, 132, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-copy:active::after {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-copy:active {
@@ -304,6 +421,7 @@
             color: #2e7d32;
             text-align: center;
             width: 100%;
+            animation: fadeInUp 0.5s ease 1.2s both;
         }
 
         .shop-info h4 {
@@ -322,9 +440,38 @@
             to { opacity: 1; }
         }
 
-        @keyframes slideUp {
+        @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            70% { transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .toast {
@@ -339,6 +486,7 @@
             font-size: 14px;
             display: none;
             z-index: 100;
+            animation: fadeIn 0.3s ease;
         }
     </style>
 </head>
