@@ -12,6 +12,30 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <style>
+        /* 飘动粒子背景 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.15;
+            animation: float linear infinite;
+            user-select: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.2; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
         * {
             margin: 0;
             padding: 0;
@@ -66,7 +90,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center top;
-            transform: scale(2.0) translateY(12%);
+            transform: scale(1.8) translateY(12%);
         }
 
         .welcome-page h1 {
@@ -301,6 +325,35 @@
             animation: fadeInUp 0.5s ease 0.6s both;
         }
 
+        .personality-desc {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+            text-align: left;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease 0.7s both;
+        }
+
+        .best-partner {
+            font-size: 14px;
+            color: #2e7d32;
+            font-weight: bold;
+            padding: 12px 16px;
+            background: #e8f5e9;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: left;
+            animation: fadeInUp 0.5s ease 0.9s both;
+            border-left: 3px solid #66bb6a;
+        }
+
+        .best-partner::before {
+            content: '💡 ';
+        }
+
         .recommend-section {
             text-align: left;
             margin-top: 20px;
@@ -520,12 +573,18 @@
             </div>
         </div>
 
+        <div class="particles" id="particles"></div>
+
         <!-- 结果页 -->
         <div class="result-page" id="resultPage">
             <div class="result-card" id="resultCard">
                 <div class="mbti-type" id="mbtiType">INTJ</div>
                 <div class="personality-title" id="personalityTitle">布局控</div>
                 <div class="catchphrase" id="catchphrase">"这步我算了5分钟，你忍一下"</div>
+
+                <div class="personality-desc" id="personalityDesc"></div>
+
+                <div class="best-partner" id="bestPartner"></div>
 
                 <div class="recommend-section">
                     <h3>🎮 推荐桌游</h3>
@@ -559,7 +618,7 @@
             }
         });
 
-        // 题库：每个维度6道题，共24道
+        // 题库：每个维度12道题，共48道
         const allQuestions = [
             // === E/I 维度（外向/内向）===
             {
@@ -592,6 +651,36 @@
                 A: { text: "拉着大家聊天八卦", scores: { E: 1 } },
                 B: { text: "找个角落刷手机", scores: { I: 1 } }
             },
+            {
+                text: "聚会结束，你更倾向于？",
+                A: { text: "再约个夜宵继续聊", scores: { E: 1 } },
+                B: { text: "赶紧回家充电", scores: { I: 1 } }
+            },
+            {
+                text: "在陌生局上，你通常？",
+                A: { text: "主动自我介绍，迅速熟络", scores: { E: 1 } },
+                B: { text: "等别人cue我再说", scores: { I: 1 } }
+            },
+            {
+                text: "你更享受哪种胜利？",
+                A: { text: "在众人欢呼中拿下", scores: { E: 1 } },
+                B: { text: "在无人注意时默默赢", scores: { I: 1 } }
+            },
+            {
+                text: "一桌游戏，你更愿意当？",
+                A: { text: "主持人，掌控全场", scores: { E: 1 } },
+                B: { text: "参与者，专心玩牌", scores: { I: 1 } }
+            },
+            {
+                text: "你更喜欢哪种玩家？",
+                A: { text: "话多有趣，活跃气氛的", scores: { E: 1 } },
+                B: { text: "安静靠谱，专注游戏的", scores: { I: 1 } }
+            },
+            {
+                text: "如果明天是桌游日，你今晚？",
+                A: { text: "兴奋得睡不着，疯狂组局", scores: { E: 1 } },
+                B: { text: "早早休息，养精蓄锐", scores: { I: 1 } }
+            },
             // === S/N 维度（实感/直觉）===
             {
                 text: "选游戏时，你更在意？",
@@ -622,6 +711,36 @@
                 text: "你更喜欢的游戏类型是？",
                 A: { text: "规则明确、算分清晰", scores: { S: 1 } },
                 B: { text: "开放度高、有多种可能性", scores: { N: 1 } }
+            },
+            {
+                text: "遇到复杂的规则书，你会？",
+                A: { text: "一步步跟着示例过一遍", scores: { S: 1 } },
+                B: { text: "先看懂核心机制，细节再说", scores: { N: 1 } }
+            },
+            {
+                text: "你更欣赏哪种玩家？",
+                A: { text: "稳扎稳打，从不犯错的", scores: { S: 1 } },
+                B: { text: "神之一手，逆天改命的", scores: { N: 1 } }
+            },
+            {
+                text: "一款游戏的画风，你更看重？",
+                A: { text: "清晰直观，一眼看懂", scores: { S: 1 } },
+                B: { text: "精美独特，有艺术感", scores: { N: 1 } }
+            },
+            {
+                text: "你更喜欢？",
+                A: { text: "经典的、经过时间考验的", scores: { S: 1 } },
+                B: { text: "新潮的、不断推陈出新的", scores: { N: 1 } }
+            },
+            {
+                text: "游戏过程中，你更在意？",
+                A: { text: "当下的最优操作", scores: { S: 1 } },
+                B: { text: "未来的潜在机会", scores: { N: 1 } }
+            },
+            {
+                text: "你更享受？",
+                A: { text: "执行既定计划的成就感", scores: { S: 1 } },
+                B: { text: "发现隐藏套路的惊喜感", scores: { N: 1 } }
             },
             // === T/F 维度（思考/情感）===
             {
@@ -654,6 +773,36 @@
                 A: { text: "指出他哪里下错了", scores: { T: 1 } },
                 B: { text: "没事，下次再来", scores: { F: 1 } }
             },
+            {
+                text: "有人为了让你赢，故意放水？",
+                A: { text: "不需要，认真打", scores: { T: 1 } },
+                B: { text: "感谢，心里暖暖的", scores: { F: 1 } }
+            },
+            {
+                text: "你更受不了哪种情况？",
+                A: { text: "因为人情世故而输", scores: { T: 1 } },
+                B: { text: "为了赢而伤害感情", scores: { F: 1 } }
+            },
+            {
+                text: "你更喜欢哪种评价？",
+                A: { text: "这步棋下得妙啊", scores: { T: 1 } },
+                B: { text: "跟你玩真开心", scores: { F: 1 } }
+            },
+            {
+                text: "面对争议规则，你？",
+                A: { text: "查清楚按规则来", scores: { T: 1 } },
+                B: { text: "大家都行就行", scores: { F: 1 } }
+            },
+            {
+                text: "你更在意？",
+                A: { text: "自己的得分和排名", scores: { T: 1 } },
+                B: { text: "大家的情绪和体验", scores: { F: 1 } }
+            },
+            {
+                text: "输了比赛，你更想听到？",
+                A: { text: "下次哪里可以改进", scores: { T: 1 } },
+                B: { text: "没关系，你已经很棒了", scores: { F: 1 } }
+            },
             // === J/P 维度（判断/知觉）===
             {
                 text: "开局前，你？",
@@ -684,6 +833,36 @@
                 text: "一局游戏结束后，你会？",
                 A: { text: "把token一个个放回盒里", scores: { J: 1 } },
                 B: { text: "一把扫进盒子完事", scores: { P: 1 } }
+            },
+            {
+                text: "你的桌游收藏？",
+                A: { text: "分类整齐，标签明确", scores: { J: 1 } },
+                B: { text: "堆在一起，能找到就行", scores: { P: 1 } }
+            },
+            {
+                text: "你更喜欢哪种游戏？",
+                A: { text: "目标明确，有终点线的", scores: { J: 1 } },
+                B: { text: "自由探索，没有边界的", scores: { P: 1 } }
+            },
+            {
+                text: "面对突发状况，你？",
+                A: { text: "有点慌，想回到正轨", scores: { J: 1 } },
+                B: { text: "兴奋了，机会来了", scores: { P: 1 } }
+            },
+            {
+                text: "你更喜欢？",
+                A: { text: "提前订好时间地点", scores: { J: 1 } },
+                B: { text: "说走就走，随时组局", scores: { P: 1 } }
+            },
+            {
+                text: "游戏过程中，你更喜欢？",
+                A: { text: "按计划执行，讨厌被打断", scores: { J: 1 } },
+                B: { text: "随时调整，拥抱意外", scores: { P: 1 } }
+            },
+            {
+                text: "你更受不了？",
+                A: { text: "计划被打乱", scores: { J: 1 } },
+                B: { text: "一成不变的套路", scores: { P: 1 } }
             }
         ];
 
@@ -705,6 +884,26 @@
             'ISFP': { title: '艺术体验派', quote: '这个token好好看啊' },
             'ESTP': { title: '赌徒型玩家', quote: '梭哈，信我' },
             'ESFP': { title: '派对之王', quote: '哈哈哈哈哈哈！' }
+        };
+
+        // 性格详细解析
+        const personalityDetail = {
+            'INTJ': { desc: '你享受在复杂局面中寻找最优解的过程。每一手棋都经过精密计算，讨厌无意义的随机性。对你来说，桌游是一场关于信息差和资源分配的博弈。', bestPartner: 'ENFP（快乐小狗）—— 能帮你打破过度分析的僵局' },
+            'INTP': { desc: '你沉迷于理解规则的底层逻辑，享受"吃透"一款游戏的快感。你可能不是胜率最高的玩家，但一定是最懂游戏设计的那个人。', bestPartner: 'ENTJ（指挥官）—— 把你的理论变成胜利的战术' },
+            'ENTJ': { desc: '你 naturally 就是桌上的领导者，善于制定战略、分配资源、带领团队。你玩游戏不是为了社交，是为了赢——而且赢得漂亮。', bestPartner: 'ISFJ（辅助担当）—— 默默执行你的计划，从不掉链子' },
+            'ENTP': { desc: '你是规则的破坏者，常规的赢法满足不了你。你享受在规则边缘试探、用话术影响局势的过程，输赢不重要，好玩最重要。', bestPartner: 'ISTJ（裁判型玩家）—— 守住规则底线，让你不至于翻船' },
+            'INFJ': { desc: '你善于观察每个人的状态，悄悄平衡局势让每个人都能参与。你不太在意自己赢不赢，更在意这局游戏让大家都开心了吗。', bestPartner: 'ESTP（赌徒型玩家）—— 带你体验冒险的刺激' },
+            'INFP': { desc: '桌游对你来说是另一种叙事方式。你容易被世界观打动，会为了角色故事而流泪。你更在乎"这局游戏讲了什么故事"而不是"谁赢了"。', bestPartner: 'ENFJ（气氛组长）—— 把你的沉浸感传递给更多人' },
+            'ENFJ': { desc: '你是天生的主持人，能迅速让新人融入氛围。你擅长读空气，知道什么时候该推进、什么时候该等一等。没有你，这桌游戏开不起来。', bestPartner: 'INTP（规则解构者）—— 帮你把复杂的规则讲清楚' },
+            'ENFP': { desc: '你让每桌游戏都充满了笑声和意外。你可能记不住最优策略，但你永远记得住哪局最搞笑。你的存在让游戏变得更好玩。', bestPartner: 'INTJ（布局控）—— 把你的热情聚焦到赢球的路上' },
+            'ISTJ': { desc: '你是桌子上的定海神针，规则问你就对了。你不会搞那些花里胡哨的操作，但你的每一步都扎实可靠，很少失误。', bestPartner: 'ENTP（搅局王）—— 给你一成不变的打法带来变数' },
+            'ISFJ': { desc: '你总是默默照顾着队友，帮大家记规则、算分、递水。你可能不是焦点，但没有你，这桌游戏会少了很多温度。', bestPartner: 'ENTJ（指挥官）—— 你的可靠让他可以放心大胆地指挥' },
+            'ESTJ': { desc: '你讲究效率和秩序，讨厌拖拖拉拉。你会主动推进游戏流程，确保每个人都按规矩来。有你在，游戏永远不会烂尾。', bestPartner: 'INFP（故事沉浸者）—— 提醒你游戏不只是为了赢' },
+            'ESFJ': { desc: '你是粘合剂型的存在，能让陌生人快速破冰。你更在乎大家玩到一起的感觉，而不是个人的输赢。聚会的灵魂人物就是你。', bestPartner: 'ISTP（冷面杀手）—— 互补的冷与热' },
+            'ISTP': { desc: '你话不多，但关键时刻总能给出致命一击。你享受单挑对决的紧张感，讨厌无谓的社交寒暄。赢了就是赢了，不需要解释。', bestPartner: 'ESFJ（社交粘合剂）—— 让你不那么孤单' },
+            'ISFP': { desc: '你是桌游圈的审美担当，选游戏先看颜值。你可能不是最强选手，但你总能发现游戏里那些别人注意不到的美。', bestPartner: 'ESTJ（局长型玩家）—— 把你的创意落地执行' },
+            'ESTP': { desc: '你喜欢高风险高回报的打法，平淡的胜利满足不了你。你享受心跳加速的时刻，哪怕下一秒就翻车也无所谓。', bestPartner: 'INFJ（团队大脑）—— 在你上头时拉住你' },
+            'ESFP': { desc: '你是全场最亮的星，有你在永远不会冷场。你可能没看完规则就急着开始，但那又怎样？过程开心最重要！', bestPartner: 'ISFJ（辅助担当）—— 在你搞砸时默默救场' }
         };
 
         // 每个MBTI对应的桌游池（从清单中选取）
@@ -732,7 +931,22 @@
         let scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
         let currentMBTI = '';
 
-        // 随机打乱数组
+        // 生成背景粒子
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const icons = ['🎲', '🃏', '⭐', '❤', '♠', '♦', '♣'];
+            for (let i = 0; i < 15; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.textContent = icons[Math.floor(Math.random() * icons.length)];
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                p.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(p);
+            }
+        }
+        createParticles();
         function shuffle(array) {
             const arr = [...array];
             for (let i = arr.length - 1; i > 0; i--) {
@@ -800,12 +1014,15 @@
             currentMBTI = ei + sn + tf + jp;
 
             const base = personalityBase[currentMBTI];
+            const detail = personalityDetail[currentMBTI];
             // 从游戏池中随机选2个
             const games = pickRandomGames(gamePools[currentMBTI]);
 
             document.getElementById('mbtiType').textContent = currentMBTI;
             document.getElementById('personalityTitle').textContent = base.title;
             document.getElementById('catchphrase').textContent = '"' + base.quote + '"';
+            document.getElementById('personalityDesc').textContent = detail.desc;
+            document.getElementById('bestPartner').textContent = '最佳队友：' + detail.bestPartner;
 
             const gameTags = document.getElementById('gameTags');
             gameTags.innerHTML = '';
