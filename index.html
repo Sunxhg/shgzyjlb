@@ -80,26 +80,42 @@
             animation: fadeIn 0.8s ease;
         }
 
-        .logo {
-            width: 140px;
-            height: 140px;
+        /* 首页右上角logo */
+        .home-logo {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: bounceIn 1s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+        }
+        .home-logo-img {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
             background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: bounceIn 1s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+            flex-shrink: 0;
         }
-
-        .logo img {
+        .home-logo-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center top;
             transform: scale(1.8) translateY(12%);
+        }
+        .home-logo-text {
+            font-size: 12px;
+            color: #558b2f;
+            font-weight: bold;
+            white-space: nowrap;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .welcome-page h1 {
@@ -989,12 +1005,16 @@
     <div class="container">
         <!-- 首页 -->
         <div class="welcome-page" id="welcomePage">
-            <div class="logo">
-                <img src="logo.jpg" alt="酸黄瓜桌游">
+            <!-- 右上角logo -->
+            <div class="home-logo">
+                <div class="home-logo-img">
+                    <img src="logo.jpg" alt="酸黄瓜桌游">
+                </div>
+                <span class="home-logo-text">酸黄瓜桌游俱乐部</span>
             </div>
-            <h1>酸黄瓜桌游测试</h1>
+            <h1>酸黄瓜妙妙屋</h1>
             <p class="subtitle">
-                三种玩法，测测你是什么类型的桌游玩家<br>
+                happy happpy happy<br>
             </p>
             <div class="mode-selector">
                 <div class="mode-card" onclick="startMBTI()">
