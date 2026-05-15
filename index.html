@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>测测你的桌游MBTI - 酸黄瓜桌游俱乐部</title>
+    <title>解锁你的桌游隐藏人格 - 酸黄瓜桌游俱乐部</title>
     <!-- Open Graph / 分享卡片 -->
-    <meta property="og:title" content="测测你的桌游MBTI">
-    <meta property="og:description" content="你是天生的指挥官，还是隐藏的规则解构者？10道题，找到最适合你的那款桌游。">
-    <meta property="og:image" content="https://sunxhg.github.io/shgzyjlb/share-cover.jpg">
+    <meta property="og:title" content="解锁你的桌游隐藏人格">
+    <meta property="og:description" content="你是欧皇交际花，还是冷血计分器？10道题，找到你的桌游隐藏人格。">
+    <meta property="og:image" content="https://sunxhg.github.io/shgzyjlb/logo.jpg">
     <meta property="og:image:width" content="1138">
     <meta property="og:image:height" content="1138">
     <meta property="og:url" content="https://sunxhg.github.io/shgzyjlb/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="酸黄瓜桌游俱乐部">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="测测你的桌游MBTI">
-    <meta name="twitter:description" content="你是天生的指挥官，还是隐藏的规则解构者？10道题，找到最适合你的那款桌游。">
+    <meta name="twitter:title" content="解锁你的桌游隐藏人格">
+    <meta name="twitter:description" content="你是欧皇交际花，还是冷血计分器？10道题，找到你的桌游隐藏人格。">
     <meta name="twitter:image" content="https://sunxhg.github.io/shgzyjlb/logo.jpg">
-    <meta name="description" content="测测你的桌游MBTI，找到最适合你的那款桌游。杭州酸黄瓜桌游俱乐部出品。">
+    <meta name="description" content="解锁你的桌游隐藏人格，找到最适合你的那款桌游。杭州酸黄瓜桌游俱乐部出品。">
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <link rel="apple-touch-icon" href="logo.jpg">
     <style>
@@ -314,9 +314,9 @@
         }
 
         .meeple-svg {
-            width: 120px;
-            height: 168px;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+            width: 140px;
+            height: 190px;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
         }
 
         .meeple-body {
@@ -597,6 +597,91 @@
             100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
 
+        /* 表情包猜桌游卡片 */
+        .guess-meme-card {
+            background: #fff;
+            border: 3px solid #333;
+            border-radius: 16px;
+            padding: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: popIn 0.5s ease;
+            overflow: hidden;
+        }
+        .meme-top {
+            background: #333;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            letter-spacing: 1px;
+        }
+        .meme-emoji {
+            font-size: 64px;
+            padding: 15px 0 10px;
+            background: #fafafa;
+        }
+        .meme-divider {
+            height: 2px;
+            background: #333;
+            margin: 0 30px;
+        }
+        .meme-bottom {
+            background: #fff3e0;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            letter-spacing: 1px;
+        }
+        .meme-bottom-emoji {
+            font-size: 48px;
+            padding: 10px 0 5px;
+            background: #fff3e0;
+        }
+        .guess-meme-label {
+            font-size: 14px;
+            color: #666;
+            padding: 8px;
+            background: #f5f5f5;
+            border-top: 2px solid #333;
+        }
+
+        /* 答题详情 */
+        .guess-answers {
+            text-align: left;
+        }
+        .guess-answer-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            gap: 8px;
+        }
+        .guess-answer-item.correct {
+            background: #e8f5e9;
+            border-left: 3px solid #66bb6a;
+        }
+        .guess-answer-item.wrong {
+            background: #ffebee;
+            border-left: 3px solid #ef5350;
+        }
+        .answer-q {
+            font-weight: bold;
+            min-width: 80px;
+        }
+        .answer-a {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .answer-yours {
+            color: #ef5350;
+            font-style: italic;
+        }
+
         /* 段位特效加强 */
         .rank-bronze { color: #cd7f32; text-shadow: 0 1px 3px rgba(205,127,50,0.4); }
         .rank-silver { color: #9e9e9e; text-shadow: 0 0 8px rgba(200,200,200,0.6); animation: silver-shine 2.5s infinite; }
@@ -783,6 +868,46 @@
             background: #f1f8e9;
         }
 
+        /* 返回首页按钮 */
+        .btn-back {
+            width: 100%;
+            background: #fff;
+            color: #666;
+            border: 2px solid #ddd;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-back:active {
+            transform: scale(0.97);
+            background: #f5f5f5;
+        }
+
+        /* 测试页顶部的返回首页按钮 */
+        .back-home-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 50;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            transition: all 0.2s;
+        }
+        .back-home-btn:active {
+            transform: scale(0.95);
+            background: #fff;
+        }
+
         .shop-info {
             margin-top: 20px;
             padding: 20px;
@@ -869,26 +994,34 @@
             </div>
             <h1>酸黄瓜桌游测试</h1>
             <p class="subtitle">
-                两种玩法，测测你是什么类型的桌游玩家<br>
+                三种玩法，测测你是什么类型的桌游玩家<br>
             </p>
             <div class="mode-selector">
                 <div class="mode-card" onclick="startMBTI()">
-                    <span class="mode-icon">🧩</span>
-                    <div class="mode-title">桌游人格测试</div>
-                    <div class="mode-desc">10道题，找到你的桌游MBTI，发现最适合你的那款桌游</div>
+                    <span class="mode-icon">🎭</span>
+                    <div class="mode-title">解锁你的桌游隐藏人格</div>
+                    <div class="mode-desc">10道题，找到你的桌游隐藏人格，发现最适合你的那款桌游</div>
                     <span class="mode-tag">人格分析</span>
                 </div>
                 <div class="mode-card" onclick="startProTest()">
                     <span class="mode-icon">🏆</span>
                     <div class="mode-title">桌游老炮段位测试</div>
-                    <div class="mode-desc">10道趣味题，测测你是萌新、进阶、老炮还是传说</div>
+                    <div class="mode-desc">10道专业知识题，测测你的桌游段位</div>
                     <span class="mode-tag">段位评定</span>
+                </div>
+                <div class="mode-card" onclick="startGuessGame()">
+                    <span class="mode-icon">🔍</span>
+                    <div class="mode-title">看图猜桌游</div>
+                    <div class="mode-desc">看封面局部线索，猜出是哪款桌游</div>
+                    <span class="mode-tag">趣味猜题</span>
                 </div>
             </div>
         </div>
 
         <!-- 测试页 -->
         <div class="quiz-page" id="quizPage">
+            <!-- 返回首页按钮 -->
+            <button class="back-home-btn" id="backHomeBtn" onclick="goHome()">← 返回首页</button>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -909,24 +1042,143 @@
             <div class="result-card" id="resultCard">
                 <!-- 桌游小人形象 -->
                 <div class="meeple-container" id="meepleContainer">
-                    <svg class="meeple-svg" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="meeple-svg" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:rgba(255,255,255,0.4)"/>
+                                <stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>
+                            </linearGradient>
+                        </defs>
                         <g id="avatarGroup">
-                            <!-- 身体 -->
-                            <ellipse id="avatarBody" cx="60" cy="110" rx="35" ry="30" fill="#66bb6a"/>
+                            <!-- 身体/衣服 -->
+                            <path id="avatarBody" d="M 50 120 Q 50 100 80 100 Q 110 100 110 120 L 115 175 Q 115 185 105 185 L 95 185 L 95 165 L 65 165 L 65 185 L 55 185 Q 45 185 45 175 Z" fill="#66bb6a"/>
+                            <!-- 领口 -->
+                            <path d="M 65 100 L 80 115 L 95 100" fill="none" stroke="#333" stroke-width="2"/>
+                            <!-- 手臂 -->
+                            <line id="armLeft" x1="50" y1="125" x2="30" y2="155" stroke="#66bb6a" stroke-width="8" stroke-linecap="round"/>
+                            <line id="armRight" x1="110" y1="125" x2="130" y2="155" stroke="#66bb6a" stroke-width="8" stroke-linecap="round"/>
+                            <!-- 手 -->
+                            <circle id="handLeft" cx="28" cy="158" r="6" fill="#ffe0cc"/>
+                            <circle id="handRight" cx="132" cy="158" r="6" fill="#ffe0cc"/>
+
                             <!-- 头部 -->
-                            <circle id="avatarHead" cx="60" cy="65" r="40" fill="#81c784"/>
-                            <!-- 左耳 -->
-                            <circle cx="25" cy="60" r="12" fill="#81c784"/>
-                            <!-- 右耳 -->
-                            <circle cx="95" cy="60" r="12" fill="#81c784"/>
-                            <!-- 表情：眼睛 -->
-                            <circle cx="48" cy="60" r="5" fill="#333"/>
-                            <circle cx="72" cy="60" r="5" fill="#333"/>
-                            <!-- 表情：腮红 -->
-                            <circle cx="35" cy="72" r="5" fill="#ffab91" opacity="0.6"/>
-                            <circle cx="85" cy="72" r="5" fill="#ffab91" opacity="0.6"/>
-                            <!-- 表情：嘴巴 -->
-                            <path d="M 52 75 Q 60 82, 68 75" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <ellipse id="avatarHead" cx="80" cy="65" rx="38" ry="42" fill="#ffe0cc"/>
+                            <!-- 头发 -->
+                            <path id="hair" d="M 42 60 Q 42 30 80 25 Q 118 30 118 60 L 118 50 Q 115 20 80 15 Q 45 20 42 50 Z" fill="#4a3728"/>
+
+                            <!-- 宽容配件: 天使翅膀 -->
+                            <g id="angelWings" style="display:none">
+                                <path d="M 35 120 Q 10 90 15 60 Q 20 45 35 55" fill="none" stroke="#fff" stroke-width="3"/>
+                                <path d="M 125 120 Q 150 90 145 60 Q 140 45 125 55" fill="none" stroke="#fff" stroke-width="3"/>
+                                <path d="M 35 115 Q 18 95 22 75 Q 25 65 38 72" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>
+                                <path d="M 125 115 Q 142 95 138 75 Q 135 65 122 72" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>
+                            </g>
+
+                            <!-- 卡人配件: 恶魔角+尾巴 -->
+                            <g id="devilHorns" style="display:none">
+                                <polygon points="50,35 40,8 62,28" fill="#c62828"/>
+                                <polygon points="110,35 120,8 98,28" fill="#c62828"/>
+                                <path d="M 120 175 Q 145 165 140 140 Q 138 130 145 125" fill="none" stroke="#c62828" stroke-width="3" stroke-linecap="round"/>
+                                <polygon points="140,125 148,120 143,132" fill="#c62828"/>
+                            </g>
+
+                            <!-- 嘴炮配件: 表情丰富，嘴巴大 -->
+                            <g id="bigMouth" style="display:none">
+                                <ellipse cx="80" cy="82" rx="14" ry="10" fill="#c62828"/>
+                                <ellipse cx="80" cy="80" rx="12" ry="7" fill="#ff6b6b"/>
+                                <path d="M 70 80 Q 75 78, 80 80 Q 85 78, 90 80" fill="none" stroke="#fff" stroke-width="1"/>
+                                <!-- 对话气泡 -->
+                                <ellipse cx="130" cy="45" rx="22" ry="15" fill="#fff" stroke="#333" stroke-width="1"/>
+                                <polygon points="115,55 120,50 118,58" fill="#fff" stroke="#333" stroke-width="0.5"/>
+                                <text x="120" y="50" font-size="10" fill="#333">!</text>
+                            </g>
+
+                            <!-- 自闭配件: 口罩+兜帽 -->
+                            <g id="hoodie" style="display:none">
+                                <path d="M 42 55 Q 42 25 80 18 Q 118 25 118 55 L 118 40 Q 115 15 80 10 Q 45 15 42 40 Z" fill="#555"/>
+                                <path d="M 45 55 Q 45 35 80 30 Q 115 35 115 55" fill="none" stroke="#444" stroke-width="2"/>
+                                <rect x="55" y="75" width="50" height="12" rx="6" fill="#eee" stroke="#ccc" stroke-width="1"/>
+                                <text x="80" y="84" font-size="8" fill="#999" text-anchor="middle">...</text>
+                            </g>
+
+                            <!-- 好运配件: 四叶草+星星 -->
+                            <g id="luckyStars" style="display:none">
+                                <!-- 四叶草发夹 -->
+                                <g transform="translate(110, 35)">
+                                    <circle cx="0" cy="-6" r="5" fill="#4caf50"/>
+                                    <circle cx="-6" cy="0" r="5" fill="#4caf50"/>
+                                    <circle cx="0" cy="6" r="5" fill="#4caf50"/>
+                                    <circle cx="6" cy="0" r="5" fill="#4caf50"/>
+                                    <circle cx="0" cy="0" r="3" fill="#ffd700"/>
+                                </g>
+                                <!-- 周围星星 -->
+                                <text x="15" y="50" font-size="14" fill="#ffd700">✦</text>
+                                <text x="140" y="130" font-size="12" fill="#ffd700">✦</text>
+                            </g>
+
+                            <!-- 运营配件: 工具带+齿轮 -->
+                            <g id="tools" style="display:none">
+                                <!-- 工具腰带 -->
+                                <rect x="48" y="130" width="64" height="10" rx="3" fill="#795548" stroke="#5d4037" stroke-width="1"/>
+                                <rect x="60" y="128" width="8" height="14" rx="2" fill="#9e9e9e" stroke="#757575" stroke-width="0.5"/>
+                                <rect x="72" y="128" width="8" height="14" rx="2" fill="#9e9e9e" stroke="#757575" stroke-width="0.5"/>
+                                <rect x="84" y="128" width="8" height="14" rx="2" fill="#9e9e9e" stroke="#757575" stroke-width="0.5"/>
+                                <!-- 小齿轮 -->
+                                <circle cx="145" cy="145" r="8" fill="none" stroke="#999" stroke-width="2" stroke-dasharray="2,1"/>
+                            </g>
+
+                            <!-- 计分配件: 宝石+算盘 -->
+                            <g id="gems" style="display:none">
+                                <!-- 宝石项链 -->
+                                <circle cx="80" cy="105" r="8" fill="#e91e63" stroke="#333" stroke-width="1"/>
+                                <circle cx="80" cy="105" r="4" fill="#f48fb1"/>
+                                <circle cx="80" cy="105" r="2" fill="#fff"/>
+                                <!-- 手中宝石 -->
+                                <polygon points="128,148 138,158 128,168 118,158" fill="#ff6b6b" stroke="#333" stroke-width="1"/>
+                                <polygon points="128,148 138,158 128,168 118,158" fill="url(#gemGrad)"/>
+                            </g>
+
+                            <!-- 故事配件: 书本+卷轴 -->
+                            <g id="storyBook" style="display:none">
+                                <!-- 手中书本 -->
+                                <rect x="125" y="140" width="20" height="25" rx="2" fill="#8d6e63" stroke="#5d4037" stroke-width="1"/>
+                                <rect x="127" y="142" width="8" height="21" fill="#fff5ee" stroke="#5d4037" stroke-width="0.5"/>
+                                <line x1="129" y1="148" x2="133" y2="148" stroke="#ccc" stroke-width="0.5"/>
+                                <line x1="129" y1="152" x2="133" y2="152" stroke="#ccc" stroke-width="0.5"/>
+                                <line x1="129" y1="156" x2="133" y2="156" stroke="#ccc" stroke-width="0.5"/>
+                                <!-- 书签 -->
+                                <polygon points="135,140 138,148 135,148" fill="#e91e63"/>
+                            </g>
+
+                            <!-- 表情: 默认眼睛 -->
+                            <g id="eyesDefault">
+                                <circle cx="64" cy="62" r="6" fill="#333"/>
+                                <circle cx="96" cy="62" r="6" fill="#333"/>
+                                <circle cx="66" cy="60" r="2" fill="#fff"/>
+                                <circle cx="98" cy="60" r="2" fill="#fff"/>
+                            </g>
+                            <!-- 表情: 卡人眼 (冷笑斜眼) -->
+                            <g id="eyesEvil" style="display:none">
+                                <path d="M 58 58 Q 64 53, 70 58" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M 90 58 Q 96 53, 102 58" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                            </g>
+                            <!-- 表情: 自闭眼 (闭眼) -->
+                            <g id="eyesShy" style="display:none">
+                                <path d="M 58 62 Q 64 58, 70 62" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M 90 62 Q 96 58, 102 62" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                            </g>
+                            <!-- 表情: 嘴炮眼 (星星眼) -->
+                            <g id="eyesStar" style="display:none">
+                                <text x="54" y="68" font-size="16" fill="#ffd700">★</text>
+                                <text x="86" y="68" font-size="16" fill="#ffd700">★</text>
+                            </g>
+
+                            <!-- 腮红 -->
+                            <ellipse cx="48" cy="72" rx="7" ry="4" fill="#ffab91" opacity="0.4"/>
+                            <ellipse cx="112" cy="72" rx="7" ry="4" fill="#ffab91" opacity="0.4"/>
+
+                            <!-- 默认嘴巴 -->
+                            <path id="mouthDefault" d="M 72 80 Q 80 87, 88 80" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
                         </g>
                     </svg>
                 </div>
@@ -995,6 +1247,7 @@
                 <button class="btn-share" onclick="shareResult()">📤 分享结果</button>
                 <button class="btn-copy" onclick="copyText()">📋 复制朋友圈文案</button>
                 <button class="btn-copy" onclick="location.reload()" style="border-color:#ccc; color:#999;">🔄 再测一次</button>
+                <button class="btn-back" onclick="goHome()">🏠 返回首页</button>
             </div>
 
             <div class="shop-info">
@@ -1017,404 +1270,159 @@
             }
         });
 
-        // 题库：每个维度12道题，共48道
+        // 题库：4个维度各12道题，共48道
+        // 维度：风格（宽容/卡人）、目标（计分/故事）、社交（嘴炮/自闭）、能力（好运/运营）
         const allQuestions = [
-            // === E/I 维度（外向/内向）===
-            {
-                text: "周末组局，你更想？",
-                A: { text: "拉满人，越热闹越好", scores: { E: 1 } },
-                B: { text: "叫一两个最熟的，安静玩", scores: { I: 1 } }
-            },
-            {
-                text: "桌游局上，你通常？",
-                A: { text: "主动带节奏，话最多", scores: { E: 1 } },
-                B: { text: "默默算牌，偶尔补刀", scores: { I: 1 } }
-            },
-            {
-                text: "组不到人时，你会？",
-                A: { text: "去店里认识新朋友", scores: { E: 1 } },
-                B: { text: "自己 solo 一局也挺好", scores: { I: 1 } }
-            },
-            {
-                text: "输了一局后，你更想？",
-                A: { text: "立刻开下一局，越战越勇", scores: { E: 1 } },
-                B: { text: "先缓缓，复盘一下再玩", scores: { I: 1 } }
-            },
-            {
-                text: "新游戏上手，你更喜欢？",
-                A: { text: "先听别人讲一遍规则", scores: { E: 1 } },
-                B: { text: "自己默默看说明书", scores: { I: 1 } }
-            },
-            {
-                text: "一场3小时的桌游，中场休息时你？",
-                A: { text: "拉着大家聊天八卦", scores: { E: 1 } },
-                B: { text: "找个角落刷手机", scores: { I: 1 } }
-            },
-            {
-                text: "聚会结束，你更倾向于？",
-                A: { text: "再约个夜宵继续聊", scores: { E: 1 } },
-                B: { text: "赶紧回家充电", scores: { I: 1 } }
-            },
-            {
-                text: "在陌生局上，你通常？",
-                A: { text: "主动自我介绍，迅速熟络", scores: { E: 1 } },
-                B: { text: "等别人cue我再说", scores: { I: 1 } }
-            },
-            {
-                text: "你更享受哪种胜利？",
-                A: { text: "在众人欢呼中拿下", scores: { E: 1 } },
-                B: { text: "在无人注意时默默赢", scores: { I: 1 } }
-            },
-            {
-                text: "一桌游戏，你更愿意当？",
-                A: { text: "主持人，掌控全场", scores: { E: 1 } },
-                B: { text: "参与者，专心玩牌", scores: { I: 1 } }
-            },
-            {
-                text: "你更喜欢哪种玩家？",
-                A: { text: "话多有趣，活跃气氛的", scores: { E: 1 } },
-                B: { text: "安静靠谱，专注游戏的", scores: { I: 1 } }
-            },
-            {
-                text: "如果明天是桌游日，你今晚？",
-                A: { text: "兴奋得睡不着，疯狂组局", scores: { E: 1 } },
-                B: { text: "早早休息，养精蓄锐", scores: { I: 1 } }
-            },
-            // === S/N 维度（实感/直觉）===
-            {
-                text: "选游戏时，你更在意？",
-                A: { text: "配件手感、规则具体能干什么", scores: { S: 1 } },
-                B: { text: "世界观、故事感、想象力", scores: { N: 1 } }
-            },
-            {
-                text: "玩游戏时，你更爱？",
-                A: { text: "看着眼前的资源和行动", scores: { S: 1 } },
-                B: { text: "想下一步、下下步的可能性", scores: { N: 1 } }
-            },
-            {
-                text: "看到一款新游戏，你最先关注？",
-                A: { text: "配件质量、版图大小", scores: { S: 1 } },
-                B: { text: "玩法创新、故事背景", scores: { N: 1 } }
-            },
-            {
-                text: "桌游对你来说更像？",
-                A: { text: "一场精确的数学竞赛", scores: { S: 1 } },
-                B: { text: "一段沉浸式的冒险", scores: { N: 1 } }
-            },
-            {
-                text: "评价一局游戏好不好玩，你更在意？",
-                A: { text: "过程是否流畅、有没有卡手", scores: { S: 1 } },
-                B: { text: "有没有打出神来之笔", scores: { N: 1 } }
-            },
-            {
-                text: "你更喜欢的游戏类型是？",
-                A: { text: "规则明确、算分清晰", scores: { S: 1 } },
-                B: { text: "开放度高、有多种可能性", scores: { N: 1 } }
-            },
-            {
-                text: "遇到复杂的规则书，你会？",
-                A: { text: "一步步跟着示例过一遍", scores: { S: 1 } },
-                B: { text: "先看懂核心机制，细节再说", scores: { N: 1 } }
-            },
-            {
-                text: "你更欣赏哪种玩家？",
-                A: { text: "稳扎稳打，从不犯错的", scores: { S: 1 } },
-                B: { text: "神之一手，逆天改命的", scores: { N: 1 } }
-            },
-            {
-                text: "一款游戏的画风，你更看重？",
-                A: { text: "清晰直观，一眼看懂", scores: { S: 1 } },
-                B: { text: "精美独特，有艺术感", scores: { N: 1 } }
-            },
-            {
-                text: "你更喜欢？",
-                A: { text: "经典的、经过时间考验的", scores: { S: 1 } },
-                B: { text: "新潮的、不断推陈出新的", scores: { N: 1 } }
-            },
-            {
-                text: "游戏过程中，你更在意？",
-                A: { text: "当下的最优操作", scores: { S: 1 } },
-                B: { text: "未来的潜在机会", scores: { N: 1 } }
-            },
-            {
-                text: "你更享受？",
-                A: { text: "执行既定计划的成就感", scores: { S: 1 } },
-                B: { text: "发现隐藏套路的惊喜感", scores: { N: 1 } }
-            },
-            // === T/F 维度（思考/情感）===
-            {
-                text: "游戏关键时刻，你倾向？",
-                A: { text: "理性计算最优解，输赢第一", scores: { T: 1 } },
-                B: { text: "照顾大家体验，氛围第一", scores: { F: 1 } }
-            },
-            {
-                text: "你更希望游戏？",
-                A: { text: "有明确的胜负，我要赢", scores: { T: 1 } },
-                B: { text: "大家都能参与，过程开心", scores: { F: 1 } }
-            },
-            {
-                text: "有人破坏你精心布局时？",
-                A: { text: "算了，游戏而已", scores: { F: 1 } },
-                B: { text: "记仇，这局我必须赢回来", scores: { T: 1 } }
-            },
-            {
-                text: "新手问你规则，你？",
-                A: { text: "快速讲完，赶紧开", scores: { T: 1 } },
-                B: { text: "慢慢教，确保他懂了", scores: { F: 1 } }
-            },
-            {
-                text: "游戏结束后，你更想？",
-                A: { text: "复盘胜负手，分析关键点", scores: { T: 1 } },
-                B: { text: "聊聊刚才的搞笑场面", scores: { F: 1 } }
-            },
-            {
-                text: "队友失误导致输掉比赛，你？",
-                A: { text: "指出他哪里下错了", scores: { T: 1 } },
-                B: { text: "没事，下次再来", scores: { F: 1 } }
-            },
-            {
-                text: "有人为了让你赢，故意放水？",
-                A: { text: "不需要，认真打", scores: { T: 1 } },
-                B: { text: "感谢，心里暖暖的", scores: { F: 1 } }
-            },
-            {
-                text: "你更受不了哪种情况？",
-                A: { text: "因为人情世故而输", scores: { T: 1 } },
-                B: { text: "为了赢而伤害感情", scores: { F: 1 } }
-            },
-            {
-                text: "你更喜欢哪种评价？",
-                A: { text: "这步棋下得妙啊", scores: { T: 1 } },
-                B: { text: "跟你玩真开心", scores: { F: 1 } }
-            },
-            {
-                text: "面对争议规则，你？",
-                A: { text: "查清楚按规则来", scores: { T: 1 } },
-                B: { text: "大家都行就行", scores: { F: 1 } }
-            },
-            {
-                text: "你更在意？",
-                A: { text: "自己的得分和排名", scores: { T: 1 } },
-                B: { text: "大家的情绪和体验", scores: { F: 1 } }
-            },
-            {
-                text: "输了比赛，你更想听到？",
-                A: { text: "下次哪里可以改进", scores: { T: 1 } },
-                B: { text: "没关系，你已经很棒了", scores: { F: 1 } }
-            },
-            // === J/P 维度（判断/知觉）===
-            {
-                text: "开局前，你？",
-                A: { text: "先想清楚策略，按计划走", scores: { J: 1 } },
-                B: { text: "边玩边想，随机应变", scores: { P: 1 } }
-            },
-            {
-                text: "你更喜欢？",
-                A: { text: "规则确定，按规矩来", scores: { J: 1 } },
-                B: { text: "变数多，每局都不一样", scores: { P: 1 } }
-            },
-            {
-                text: "去桌游店前，你通常？",
-                A: { text: "提前想好要玩什么", scores: { J: 1 } },
-                B: { text: "到了再说，看心情", scores: { P: 1 } }
-            },
-            {
-                text: "游戏进行到一半，有人提议换规则？",
-                A: { text: "不行，按原规则来", scores: { J: 1 } },
-                B: { text: "可以啊，试试新的", scores: { P: 1 } }
-            },
-            {
-                text: "你更享受？",
-                A: { text: "按照计划一步步赢下来", scores: { J: 1 } },
-                B: { text: "最后关头逆袭翻盘", scores: { P: 1 } }
-            },
-            {
-                text: "一局游戏结束后，你会？",
-                A: { text: "把token一个个放回盒里", scores: { J: 1 } },
-                B: { text: "一把扫进盒子完事", scores: { P: 1 } }
-            },
-            {
-                text: "你的桌游收藏？",
-                A: { text: "分类整齐，标签明确", scores: { J: 1 } },
-                B: { text: "堆在一起，能找到就行", scores: { P: 1 } }
-            },
-            {
-                text: "你更喜欢哪种游戏？",
-                A: { text: "目标明确，有终点线的", scores: { J: 1 } },
-                B: { text: "自由探索，没有边界的", scores: { P: 1 } }
-            },
-            {
-                text: "面对突发状况，你？",
-                A: { text: "有点慌，想回到正轨", scores: { J: 1 } },
-                B: { text: "兴奋了，机会来了", scores: { P: 1 } }
-            },
-            {
-                text: "你更喜欢？",
-                A: { text: "提前订好时间地点", scores: { J: 1 } },
-                B: { text: "说走就走，随时组局", scores: { P: 1 } }
-            },
-            {
-                text: "游戏过程中，你更喜欢？",
-                A: { text: "按计划执行，讨厌被打断", scores: { J: 1 } },
-                B: { text: "随时调整，拥抱意外", scores: { P: 1 } }
-            },
-            {
-                text: "你更受不了？",
-                A: { text: "计划被打乱", scores: { J: 1 } },
-                B: { text: "一成不变的套路", scores: { P: 1 } }
-            }
+            // === 维度1：风格（宽容 / 卡人）===
+            { text: "朋友下错一步牌导致崩盘，你？", A: { text: "算了，游戏而已", scores: { 宽容: 1 } }, B: { text: "记仇，下局必须卡回来", scores: { 卡人: 1 } } },
+            { text: "有人违反规则但没被发现，你？", A: { text: "装没看见，开心就好", scores: { 宽容: 1 } }, B: { text: "必须指出来，规则就是规则", scores: { 卡人: 1 } } },
+            { text: "新人一直输，你会？", A: { text: "暗中放水帮他", scores: { 宽容: 1 } }, B: { text: "该输就输，竞技精神", scores: { 卡人: 1 } } },
+            { text: "队友坑了你导致输掉比赛，你？", A: { text: "没事，下次再来", scores: { 宽容: 1 } }, B: { text: "当场分析他哪里下错了", scores: { 卡人: 1 } } },
+            { text: "有人为了让你赢故意让你，你？", A: { text: "感谢，心里暖暖的", scores: { 宽容: 1 } }, B: { text: "不需要，认真打", scores: { 卡人: 1 } } },
+            { text: "你更受不了哪种情况？", A: { text: "为了赢而伤害感情", scores: { 宽容: 1 } }, B: { text: "因为人情世故而输", scores: { 卡人: 1 } } },
+            { text: "面对争议规则，你？", A: { text: "大家都行就行", scores: { 宽容: 1 } }, B: { text: "查清楚按规则来", scores: { 卡人: 1 } } },
+            { text: "有人破坏你精心布局，你？", A: { text: "算了，游戏而已", scores: { 宽容: 1 } }, B: { text: "记仇，这局必须赢回来", scores: { 卡人: 1 } } },
+            { text: "你更喜欢哪种评价？", A: { text: "跟你玩真开心", scores: { 宽容: 1 } }, B: { text: "这步棋下得妙啊", scores: { 卡人: 1 } } },
+            { text: "输了比赛，你更想听到？", A: { text: "没关系，你已经很棒了", scores: { 宽容: 1 } }, B: { text: "下次哪里可以改进", scores: { 卡人: 1 } } },
+            { text: "你更在意？", A: { text: "大家的情绪和体验", scores: { 宽容: 1 } }, B: { text: "自己的得分和排名", scores: { 卡人: 1 } } },
+            { text: "游戏中你更喜欢？", A: { text: "照顾大家体验，氛围第一", scores: { 宽容: 1 } }, B: { text: "理性计算最优解，输赢第一", scores: { 卡人: 1 } } },
+            // === 维度2：目标（计分 / 故事）===
+            { text: "玩桌游时你更关注？", A: { text: "算清楚每个得分点", scores: { 计分: 1 } }, B: { text: "沉浸在游戏的故事里", scores: { 故事: 1 } } },
+            { text: "评价一局游戏好不好玩，你更在意？", A: { text: "过程是否流畅、有没有卡手", scores: { 计分: 1 } }, B: { text: "有没有打出神来之笔", scores: { 故事: 1 } } },
+            { text: "桌游对你来说更像？", A: { text: "一场精确的数学竞赛", scores: { 计分: 1 } }, B: { text: "一段沉浸式的冒险", scores: { 故事: 1 } } },
+            { text: "玩游戏时，你更爱？", A: { text: "看着眼前的资源和行动", scores: { 计分: 1 } }, B: { text: "想下一步、下下步的可能性", scores: { 故事: 1 } } },
+            { text: "选游戏时，你更在意？", A: { text: "配件手感、规则具体能干什么", scores: { 计分: 1 } }, B: { text: "世界观、故事感、想象力", scores: { 故事: 1 } } },
+            { text: "遇到复杂的规则书，你会？", A: { text: "一步步跟着示例过一遍", scores: { 计分: 1 } }, B: { text: "先看懂核心机制，细节再说", scores: { 故事: 1 } } },
+            { text: "一款游戏的画风，你更看重？", A: { text: "清晰直观，一眼看懂", scores: { 计分: 1 } }, B: { text: "精美独特，有艺术感", scores: { 故事: 1 } } },
+            { text: "你更喜欢？", A: { text: "经典的、经过时间考验的", scores: { 计分: 1 } }, B: { text: "新潮的、不断推陈出新的", scores: { 故事: 1 } } },
+            { text: "游戏过程中，你更在意？", A: { text: "当下的最优操作", scores: { 计分: 1 } }, B: { text: "未来的潜在机会", scores: { 故事: 1 } } },
+            { text: "你更享受？", A: { text: "执行既定计划的成就感", scores: { 计分: 1 } }, B: { text: "发现隐藏套路的惊喜感", scores: { 故事: 1 } } },
+            { text: "你更欣赏哪种玩家？", A: { text: "稳扎稳打，从不犯错的", scores: { 计分: 1 } }, B: { text: "神之一手，逆天改命的", scores: { 故事: 1 } } },
+            { text: "你更喜欢的游戏类型是？", A: { text: "规则明确、算分清晰", scores: { 计分: 1 } }, B: { text: "开放度高、有多种可能性", scores: { 故事: 1 } } },
+            // === 维度3：社交（嘴炮 / 自闭）===
+            { text: "周末组局，你更想？", A: { text: "拉满人，越热闹越好", scores: { 嘴炮: 1 } }, B: { text: "叫一两个最熟的，安静玩", scores: { 自闭: 1 } } },
+            { text: "桌游局上，你通常？", A: { text: "主动带节奏，话最多", scores: { 嘴炮: 1 } }, B: { text: "默默算牌，偶尔补刀", scores: { 自闭: 1 } } },
+            { text: "组不到人时，你会？", A: { text: "去店里认识新朋友", scores: { 嘴炮: 1 } }, B: { text: "自己 solo 一局也挺好", scores: { 自闭: 1 } } },
+            { text: "新游戏上手，你更喜欢？", A: { text: "先听别人讲一遍规则", scores: { 嘴炮: 1 } }, B: { text: "自己默默看说明书", scores: { 自闭: 1 } } },
+            { text: "一场3小时的桌游，中场休息时你？", A: { text: "拉着大家聊天八卦", scores: { 嘴炮: 1 } }, B: { text: "找个角落刷手机", scores: { 自闭: 1 } } },
+            { text: "聚会结束，你更倾向于？", A: { text: "再约个夜宵继续聊", scores: { 嘴炮: 1 } }, B: { text: "赶紧回家充电", scores: { 自闭: 1 } } },
+            { text: "在陌生局上，你通常？", A: { text: "主动自我介绍，迅速熟络", scores: { 嘴炮: 1 } }, B: { text: "等别人cue我再说", scores: { 自闭: 1 } } },
+            { text: "你更享受哪种胜利？", A: { text: "在众人欢呼中拿下", scores: { 嘴炮: 1 } }, B: { text: "在无人注意时默默赢", scores: { 自闭: 1 } } },
+            { text: "一桌游戏，你更愿意当？", A: { text: "主持人，掌控全场", scores: { 嘴炮: 1 } }, B: { text: "参与者，专心玩牌", scores: { 自闭: 1 } } },
+            { text: "你更喜欢哪种玩家？", A: { text: "话多有趣，活跃气氛的", scores: { 嘴炮: 1 } }, B: { text: "安静靠谱，专注游戏的", scores: { 自闭: 1 } } },
+            { text: "如果明天是桌游日，你今晚？", A: { text: "兴奋得睡不着，疯狂组局", scores: { 嘴炮: 1 } }, B: { text: "早早休息，养精蓄锐", scores: { 自闭: 1 } } },
+            { text: "输了一局后，你更想？", A: { text: "立刻开下一局，越战越勇", scores: { 嘴炮: 1 } }, B: { text: "先缓缓，复盘一下再玩", scores: { 自闭: 1 } } },
+            // === 维度4：能力（好运 / 运营）===
+            { text: "你更希望游戏？", A: { text: "变数多，每局都不一样", scores: { 好运: 1 } }, B: { text: "规则确定，按规矩来", scores: { 运营: 1 } } },
+            { text: "开局前，你？", A: { text: "边玩边想，随机应变", scores: { 好运: 1 } }, B: { text: "先想清楚策略，按计划走", scores: { 运营: 1 } } },
+            { text: "你更享受？", A: { text: "最后关头逆袭翻盘", scores: { 好运: 1 } }, B: { text: "按照计划一步步赢下来", scores: { 运营: 1 } } },
+            { text: "一局游戏结束后，你会？", A: { text: "一把扫进盒子完事", scores: { 好运: 1 } }, B: { text: "把token一个个放回盒里", scores: { 运营: 1 } } },
+            { text: "去桌游店前，你通常？", A: { text: "到了再说，看心情", scores: { 好运: 1 } }, B: { text: "提前想好要玩什么", scores: { 运营: 1 } } },
+            { text: "游戏进行到一半，有人提议换规则？", A: { text: "可以啊，试试新的", scores: { 好运: 1 } }, B: { text: "不行，按原规则来", scores: { 运营: 1 } } },
+            { text: "你的桌游收藏？", A: { text: "堆在一起，能找到就行", scores: { 好运: 1 } }, B: { text: "分类整齐，标签明确", scores: { 运营: 1 } } },
+            { text: "你更喜欢哪种游戏？", A: { text: "自由探索，没有边界的", scores: { 好运: 1 } }, B: { text: "目标明确，有终点线的", scores: { 运营: 1 } } },
+            { text: "面对突发状况，你？", A: { text: "兴奋了，机会来了", scores: { 好运: 1 } }, B: { text: "有点慌，想回到正轨", scores: { 运营: 1 } } },
+            { text: "你更喜欢？", A: { text: "说走就走，随时组局", scores: { 好运: 1 } }, B: { text: "提前订好时间地点", scores: { 运营: 1 } } },
+            { text: "游戏过程中，你更喜欢？", A: { text: "随时调整，拥抱意外", scores: { 好运: 1 } }, B: { text: "按计划执行，讨厌被打断", scores: { 运营: 1 } } },
+            { text: "你更受不了？", A: { text: "一成不变的套路", scores: { 好运: 1 } }, B: { text: "计划被打乱", scores: { 运营: 1 } } },
         ];
 
-        // 人格标签与金句
-        const personalityBase = {
-            'INTJ': { title: '布局控', quote: '这步我算了5分钟，你忍一下' },
-            'INTP': { title: '规则解构者', quote: '让我再看一眼终局计分' },
-            'ENTJ': { title: '指挥官', quote: '听我的，这把这么打' },
-            'ENTP': { title: '搅局王', quote: '我骗你的，但你可以信' },
-            'INFJ': { title: '团队大脑', quote: '牺牲我一个，成全大家' },
-            'INFP': { title: '故事沉浸者', quote: '我在角色里走不出来了' },
-            'ENFJ': { title: '气氛组长', quote: '来，新人我教你' },
-            'ENFP': { title: '快乐小狗', quote: '这个好玩！再玩一局！' },
-            'ISTJ': { title: '裁判型玩家', quote: '规则第7.3条不是这样的' },
-            'ISFJ': { title: '辅助担当', quote: '没事，我救你' },
-            'ESTJ': { title: '局长型玩家', quote: '别插话，按顺序来' },
-            'ESFJ': { title: '社交粘合剂', quote: '大家一起玩才开心' },
-            'ISTP': { title: '冷面杀手', quote: '废话少说，开干' },
-            'ISFP': { title: '艺术体验派', quote: '这个token好好看啊' },
-            'ESTP': { title: '赌徒型玩家', quote: '梭哈，信我' },
-            'ESFP': { title: '派对之王', quote: '哈哈哈哈哈哈！' }
-        };
-
-        // 性格详细解析
-        const personalityDetail = {
-            'INTJ': { desc: '你享受在复杂局面中寻找最优解的过程。每一手棋都经过精密计算，讨厌无意义的随机性。对你来说，桌游是一场关于信息差和资源分配的博弈。', bestPartner: 'ENFP（快乐小狗）—— 能帮你打破过度分析的僵局' },
-            'INTP': { desc: '你沉迷于理解规则的底层逻辑，享受"吃透"一款游戏的快感。你可能不是胜率最高的玩家，但一定是最懂游戏设计的那个人。', bestPartner: 'ENTJ（指挥官）—— 把你的理论变成胜利的战术' },
-            'ENTJ': { desc: '你 naturally 就是桌上的领导者，善于制定战略、分配资源、带领团队。你玩游戏不是为了社交，是为了赢——而且赢得漂亮。', bestPartner: 'ISFJ（辅助担当）—— 默默执行你的计划，从不掉链子' },
-            'ENTP': { desc: '你是规则的破坏者，常规的赢法满足不了你。你享受在规则边缘试探、用话术影响局势的过程，输赢不重要，好玩最重要。', bestPartner: 'ISTJ（裁判型玩家）—— 守住规则底线，让你不至于翻船' },
-            'INFJ': { desc: '你善于观察每个人的状态，悄悄平衡局势让每个人都能参与。你不太在意自己赢不赢，更在意这局游戏让大家都开心了吗。', bestPartner: 'ESTP（赌徒型玩家）—— 带你体验冒险的刺激' },
-            'INFP': { desc: '桌游对你来说是另一种叙事方式。你容易被世界观打动，会为了角色故事而流泪。你更在乎"这局游戏讲了什么故事"而不是"谁赢了"。', bestPartner: 'ENFJ（气氛组长）—— 把你的沉浸感传递给更多人' },
-            'ENFJ': { desc: '你是天生的主持人，能迅速让新人融入氛围。你擅长读空气，知道什么时候该推进、什么时候该等一等。没有你，这桌游戏开不起来。', bestPartner: 'INTP（规则解构者）—— 帮你把复杂的规则讲清楚' },
-            'ENFP': { desc: '你让每桌游戏都充满了笑声和意外。你可能记不住最优策略，但你永远记得住哪局最搞笑。你的存在让游戏变得更好玩。', bestPartner: 'INTJ（布局控）—— 把你的热情聚焦到赢球的路上' },
-            'ISTJ': { desc: '你是桌子上的定海神针，规则问你就对了。你不会搞那些花里胡哨的操作，但你的每一步都扎实可靠，很少失误。', bestPartner: 'ENTP（搅局王）—— 给你一成不变的打法带来变数' },
-            'ISFJ': { desc: '你总是默默照顾着队友，帮大家记规则、算分、递水。你可能不是焦点，但没有你，这桌游戏会少了很多温度。', bestPartner: 'ENTJ（指挥官）—— 你的可靠让他可以放心大胆地指挥' },
-            'ESTJ': { desc: '你讲究效率和秩序，讨厌拖拖拉拉。你会主动推进游戏流程，确保每个人都按规矩来。有你在，游戏永远不会烂尾。', bestPartner: 'INFP（故事沉浸者）—— 提醒你游戏不只是为了赢' },
-            'ESFJ': { desc: '你是粘合剂型的存在，能让陌生人快速破冰。你更在乎大家玩到一起的感觉，而不是个人的输赢。聚会的灵魂人物就是你。', bestPartner: 'ISTP（冷面杀手）—— 互补的冷与热' },
-            'ISTP': { desc: '你话不多，但关键时刻总能给出致命一击。你享受单挑对决的紧张感，讨厌无谓的社交寒暄。赢了就是赢了，不需要解释。', bestPartner: 'ESFJ（社交粘合剂）—— 让你不那么孤单' },
-            'ISFP': { desc: '你是桌游圈的审美担当，选游戏先看颜值。你可能不是最强选手，但你总能发现游戏里那些别人注意不到的美。', bestPartner: 'ESTJ（局长型玩家）—— 把你的创意落地执行' },
-            'ESTP': { desc: '你喜欢高风险高回报的打法，平淡的胜利满足不了你。你享受心跳加速的时刻，哪怕下一秒就翻车也无所谓。', bestPartner: 'INFJ（团队大脑）—— 在你上头时拉住你' },
-            'ESFP': { desc: '你是全场最亮的星，有你在永远不会冷场。你可能没看完规则就急着开始，但那又怎样？过程开心最重要！', bestPartner: 'ISFJ（辅助担当）—— 在你搞砸时默默救场' }
-        };
-
-        // 每个MBTI对应的桌游池（从清单中选取）
-        const gamePools = {
-            'INTJ': ['灵迹岛', '重塑火星', '奥丁的盛宴', '历史巨轮：人类文明新篇章', '镰刀战争', '伯明翰', '神秘大地', '农场主', '方舟动物园', '勃艮第城堡：豪华版', '大西部之路（带北方扩）', '康考迪娅', '领国者：带领你的阶级迈向胜利', '丘吉尔', '冷战热斗'],
-            'INTP': ['奥丁的盛宴', '历史巨轮：人类文明新篇章', '神秘大地', '农场主', '伯明翰', '重塑火星', '灵迹岛', '发明简史：伟大创意的演化', '殖民火星（假设有类似）', '伯明翰'],
-            'ENTJ': ['领国者：带领你的阶级迈向胜利', '镰刀战争', '旭日战魂录', '冷战热斗', '丘吉尔', '三国：乱世枭雄', '战争之匣', '复仇女神号', '复仇女神号：反击', '三国杀'],
-            'ENTP': ['诺丁汉警长（第二版）', '政变疑云', '风声：典藏版', '以鹅传鹅', '狼人真言', '抵抗组织', '政变疑云：叛军G54', '阿瓦隆2：亚瑟传奇'],
-            'INFJ': ['瘟疫危机：浪潮汹涌', '灵笼：猎荒使命', '深海谍影', '瘟疫危机', '禁闭岛（如有）', 'Pandemic系列'],
-            'INFP': ['诡镇奇谈：卡牌版', '忘海传记', '沉睡的神祇', '骸骨险境', '疯狂诡宅：第二版', '荒野冒险家', '魔戒：中州征途', '魔戒中州：对决'],
-            'ENFJ': ['传情画意', '行动代号', '独家暗语', '语破天机', '猜心俱乐部', '传情画意：欢乐今宵版'],
-            'ENFP': ['行动代号', '哈铃果铃', 'UNO', '骆驼大赛', '东京高速公路', '动物农场', '哈铃果铃'],
-            'ISTJ': ['璀璨宝石', '七大奇迹：对决', '铁路环游', '拼布', '拉密', '方格都市', '卡坦岛', '卡卡颂：大盒版'],
-            'ISFJ': ['瘟疫危机：浪潮汹涌', '灵笼：猎荒使命', '猫与花毯', '萌犬公园', '熊猫戏梦', '瘟疫危机'],
-            'ESTJ': ['铁路环游', '电力公司', '快餐连锁大亨', '伯明翰', '奥地利大饭店', '汉萨同盟：大盒版'],
-            'ESFJ': ['传情画意', '行动代号', '独家暗语', '语破天机', '哈铃果铃', '行动代号', '传情画意：欢乐今宵版'],
-            'ISTP': ['七大奇迹：对决', '璀璨宝石：对决', '无双对决', '战争之匣', '拼布艺术', '王权骰铸（第一季+第二季+冒险+漫威）'],
-            'ISFP': ['展翅翱翔', '花见小路', '花火', '印象画语', '画物语', 'Dixit', '花见小路'],
-            'ESTP': ['拉斯维加斯：豪华版', '马尼拉', '骆驼大赛', '赌命大赛', '印加宝藏', '拉斯维加斯'],
-            'ESFP': ['哈铃果铃', 'UNO', '行动代号', '传情画意', '骆驼大赛', '德国蟑螂', '脏小猪']
+        // 16种桌游隐藏人格
+        const personalityData = {
+            '宽容-计分-嘴炮-好运': { name: '欧皇交际花', tag: '佛系精算，靠运气和口才赢得人心', quote: '"别急，骰子会站在我这边的"', desc: '你表面上笑嘻嘻，心里却在默默算分。靠运气和口才双管齐下，朋友喜欢跟你玩，因为你从不给压力，但分数总是悄悄被你拿走。', partner: '冷血计分器——你的佛系刚好中和ta的杀气', color: '#ff6b6b' },
+            '宽容-计分-嘴炮-运营': { name: '社交精算师', tag: '善于计算又乐于交流，用策略带节奏', quote: '"听我的，这把咱们这么打"', desc: '你是桌上最会说话的战略家。一边聊天一边布局，把复杂规则用最通俗的方式讲清楚。朋友信你，不是因为你人好，是因为你算得准。', partner: '福星隐士——ta的直觉能帮你打破过度分析的僵局', color: '#ffa94d' },
+            '宽容-计分-自闭-好运': { name: '闷声欧皇', tag: '低调攒分，运气爆棚却不露声色', quote: '"…（默默把token收走）"', desc: '你不爱说话，但每次掷骰子都像开了挂。朋友们以为你在发呆，其实你在暗中攒分。等他们反应过来，你已经赢了。', partner: '幸运搅屎棍——ta的嘴炮刚好替你活跃气氛', color: '#ffd43b' },
+            '宽容-计分-自闭-运营': { name: '孤独算盘', tag: '独自默默算计，每一步都精准无误', quote: '"这步我算了5分钟，你忍一下"', desc: '你享受一个人默默推演的过程。不社交、不聊天，但每一步都经过精密计算。你是桌游界的扫地僧，不鸣则已，一鸣惊人。', partner: '社交精算师——ta能帮你把理论变成胜利的战术', color: '#74c0fc' },
+            '宽容-故事-嘴炮-好运': { name: '幸运说书人', tag: '靠运气讲故事，总能化险为夷', quote: '"这局故事太精彩了，谁还在乎输赢"', desc: '你是天生的故事大王，靠运气和口才编织精彩剧情。就算局面崩盘，你也能讲出一个让人捧腹的故事。跟你玩，永远不会无聊。', partner: '暗影收割者——ta的沉默刚好衬托你的热闹', color: '#ff8787' },
+            '宽容-故事-嘴炮-运营': { name: '故事外交官', tag: '用嘴炮编织剧情，用运营推动发展', quote: '"来，新人我教你，这局故事这么走"', desc: '你是天生的主持人，能用嘴炮把一局普通游戏变成史诗大片。你擅长读空气，知道什么时候该推进、什么时候该等一等。没有你，这桌游戏开不起来。', partner: '孤独算盘——ta的精准能帮你把故事落地', color: '#69db7c' },
+            '宽容-故事-自闭-好运': { name: '福星隐士', tag: '独自沉浸剧情，运气助他奇遇连连', quote: '"我在角色里走不出来了"', desc: '你容易被世界观打动，会为角色故事而流泪。运气总是眷顾你，但你不张扬。你更在乎"这局游戏讲了什么故事"而不是"谁赢了"。', partner: '毒舌操盘手——ta的毒舌能帮你打破沉浸的孤独', color: '#da77f2' },
+            '宽容-故事-自闭-运营': { name: '沉默编剧', tag: '安静构思剧本，内心戏十足', quote: '"这个token好好看啊"', desc: '你是桌游圈的审美担当，安静地构思着自己的故事。你可能不是最强选手，但你总能发现游戏里那些别人注意不到的美。内心戏比谁都丰富。', partner: '社交精算师——ta能把你的创意讲给更多人听', color: '#a78bfa' },
+            '卡人-计分-嘴炮-好运': { name: '笑面捣蛋鬼', tag: '笑着卡人，运气加持，防不胜防', quote: '"我骗你的，但你可以信"', desc: '你笑着就把人卡了，运气还总是站在你这边。朋友被你卡了也不生气，因为你笑得实在太真诚了。你是桌游界的笑面虎，人人又怕又爱。', partner: '沉默编剧——ta的安静刚好让你有施展空间', color: '#f06595' },
+            '卡人-计分-嘴炮-运营': { name: '毒舌操盘手', tag: '嘴上不饶人，手上精布局，专搞心态', quote: '"你这一步不合规"', desc: '你是桌上的大魔王。嘴上不饶人，手上精布局，专搞人心态。朋友跟你玩又爱又恨，但每次都被你安排得明明白白。', partner: '福星隐士——ta的佛系刚好化解你的杀气', color: '#e03131' },
+            '卡人-计分-自闭-好运': { name: '暗影收割者', tag: '沉默中卡分暴击，全靠天选之手', quote: '"…（沉默地赢了）"', desc: '你不说话，但每次出手都是暴击。运气好到离谱，朋友以为你在开挂。你是桌游界的刺客，沉默中完成收割，事了拂衣去。', partner: '社交精算师——ta的嘴炮刚好替你解释操作', color: '#868e96' },
+            '卡人-计分-自闭-运营': { name: '冷血计分器', tag: '无情计算，精确卡位，毫无感情', desc: '你是无情的得分机器。不讲人情、不搞社交，每一步都精确到小数点后两位。朋友跟你玩需要做好心理准备，因为你是真的在算分，不是在玩。', partner: '幸运说书人——ta的故事能帮你找回游戏的乐趣', color: '#495057' },
+            '卡人-故事-嘴炮-好运': { name: '幸运搅屎棍', tag: '嘴炮破坏剧情，运气让他总能得逞', quote: '"规则是什么？能吃吗？"', desc: '你是规则的破坏者，用嘴炮和运气把一切搞得天翻地覆。朋友被你气得牙痒痒，但每次都被你莫名其妙的运气折服。', partner: '沉默编剧——ta的安静刚好让你有表演空间', color: '#fab005' },
+            '卡人-故事-嘴炮-运营': { name: '阴谋家', tag: '精心策划每个冲突，让故事按他剧本走', quote: '"听我的，这把这么打"', desc: '你是天生的阴谋家，精心策划每个冲突，让故事完全按你的剧本走。朋友以为自己在玩，其实早就是你故事里的角色了。', partner: '闷声欧皇——ta的低调刚好衬托你的高调', color: '#be4bdb' },
+            '卡人-故事-自闭-好运': { name: '天灾独狼', tag: '独行搞事，运气如天灾，所到之处寸草不生', quote: '"梭哈，信我"', desc: '你是独狼，但运气好到像天灾。所到之处寸草不生，朋友被你卡了也只能认命。你是桌游界的天灾级玩家，又恨又服。', partner: '社交精算师——ta能帮你把天灾变成可控的灾难', color: '#22b8cf' },
+            '卡人-故事-自闭-运营': { name: '暗黑编剧', tag: '默默撰写悲剧，每一步都是伏笔', quote: '"这步我算了5分钟，你忍一下"', desc: '你是暗黑系的剧本大师，默默撰写悲剧，每一步都是伏笔。朋友以为你在发呆，其实你在编织一张大网。等他们发现时，已经无处可逃了。', partner: '幸运说书人——ta的嘴炮能帮你把暗黑剧本讲得更精彩', color: '#339af0' }
         };
 
         // 经典语录
         const classicQuotes = {
-            'INTJ': ['"这步我算了5分钟，你忍一下"', '"让我把终局算完再吃饭"', '"你的最优解在我眼里只是局部最优"'],
-            'INTP': ['"规则书里不是这样写的…让我再看看"', '"这个游戏的设计逻辑有问题"', '"等等，这个combo我好像算漏了"'],
-            'ENTJ': ['"听我的，这把这么打"', '"你们都不行，我来"', '"赢是结果，不是过程"'],
-            'ENTP': ['"我骗你的，但你可以信"', '"规则就是用来打破的"', '"这个策略太无聊了，换个花样"'],
-            'INFJ': ['"牺牲我一个，成全大家"', '"我注意到你刚才好像不开心"', '"这局让给你赢吧"'],
-            'INFP': ['"我在角色里走不出来了"', '"这个故事太感人了…"', '"我不在乎输赢，我在乎故事"'],
-            'ENFJ': ['"来，新人我教你"', '"大家别吵了，听我说"', '"这局我来带节奏"'],
-            'ENFP': ['"这个好玩！再玩一局！"', '"哈哈哈哈刚才那个太搞笑了"', '"规则是什么？能吃吗？"'],
-            'ISTJ': ['"规则第7.3条不是这样的"', '"说明书上明明写了…"', '"你这一步不合规"'],
-            'ISFJ': ['"没事，我救你"', '"你渴吗？我给你倒杯水"', '"没关系，我们再试一次"'],
-            'ESTJ': ['"别插话，按顺序来"', '"轮到你了，快点"', "'这个游戏应该这么玩'"],
-            'ESFJ': ['"大家一起玩才开心"', '"谁还没选？快一点"', '"这局我请大家喝奶茶"'],
-            'ISTP': ['"废话少说，开干"', '"…（沉默地赢了）"', '"这步不难，你看"'],
-            'ISFP': ['"这个token好好看啊"', '"这个游戏画风太美了"', '"我能把版图带回家吗？"'],
-            'ESTP': ['"梭哈，信我"', '"这把稳了，all in"', '"不赌大的没意思"'],
-            'ESFP': ['"哈哈哈哈哈哈！"', '"等等我，我还没看完规则！"', '"谁在乎输赢，快乐就完事了"']
+            '宽容-计分-嘴炮-好运': ['"别急，骰子会站在我这边的"', '"朋友第一，分数第二"', '"笑一笑，分数自然来"'],
+            '宽容-计分-嘴炮-运营': ['"听我的，这把咱们这么打"', '"规则我来解释，你们跟着走"', '"别慌，我算过了"'],
+            '宽容-计分-自闭-好运': ['"…（默默把token收走）"', '"我运气好像不错"', '"诶？怎么又赢了"'],
+            '宽容-计分-自闭-运营': ['"这步我算了5分钟，你忍一下"', '"让我把终局算完再吃饭"', '"你的最优解在我眼里只是局部最优"'],
+            '宽容-故事-嘴炮-好运': ['"这局故事太精彩了，谁还在乎输赢"', '"等等，这个剧情走向不对"', '"哈哈哈哈刚才那个太搞笑了"'],
+            '宽容-故事-嘴炮-运营': ['"来，新人我教你，这局故事这么走"', '"大家别吵了，听我说"', '"这局我来带节奏"'],
+            '宽容-故事-自闭-好运': ['"我在角色里走不出来了"', '"这个故事太感人了…"', '"我不在乎输赢，我在乎故事"'],
+            '宽容-故事-自闭-运营': ['"这个token好好看啊"', '"这个游戏画风太美了"', '"我能把版图带回家吗？"'],
+            '卡人-计分-嘴炮-好运': ['"我骗你的，但你可以信"', '"规则是什么？能吃吗？"', '"梭哈，信我"'],
+            '卡人-计分-嘴炮-运营': ['"你这一步不合规"', '"别插话，按顺序来"', '"这个游戏应该这么玩"'],
+            '卡人-计分-自闭-好运': ['"…（沉默地赢了）"', '"诶？又暴击了"', '"运气好也是实力的一部分"'],
+            '卡人-计分-自闭-运营': ['"让我再看一眼终局计分"', '"规则书里不是这样写的…让我再看看"', '"你的combo我早就看穿了"'],
+            '卡人-故事-嘴炮-好运': ['"规则就是用来打破的"', '"这个策略太无聊了，换个花样"', '"不赌大的没意思"'],
+            '卡人-故事-嘴炮-运营': ['"听我的，这把这么打"', '"你们都不行，我来"', '"赢是结果，不是过程"'],
+            '卡人-故事-自闭-好运': ['"梭哈，信我"', '"这把稳了，all in"', '"天选之人，没办法"'],
+            '卡人-故事-自闭-运营': ['"这步我算了5分钟，你忍一下"', '"你的combo在我眼里只是局部最优"', '"让我把终局算完再吃饭"']
         };
 
         // 米宝颜色映射
         const meepleColors = {
-            'INTJ': { body: '#1a237e', head: '#283593' },
-            'INTP': { body: '#4a148c', head: '#6a1b9a' },
-            'ENTJ': { body: '#b71c1c', head: '#c62828' },
-            'ENTP': { body: '#e65100', head: '#ef6c00' },
-            'INFJ': { body: '#006064', head: '#00838f' },
-            'INFP': { body: '#c2185b', head: '#d81b60' },
-            'ENFJ': { body: '#0277bd', head: '#0288d1' },
-            'ENFP': { body: '#f9a825', head: '#fbc02d' },
-            'ISTJ': { body: '#4e342e', head: '#5d4037' },
-            'ISFJ': { body: '#7b1fa2', head: '#8e24aa' },
-            'ESTJ': { body: '#1b5e20', head: '#2e7d32' },
-            'ESFJ': { body: '#ad1457', head: '#c2185b' },
-            'ISTP': { body: '#455a64', head: '#546e7a' },
-            'ISFP': { body: '#2e7d32', head: '#43a047' },
-            'ESTP': { body: '#c62828', head: '#d32f2f' },
-            'ESFP': { body: '#f57f17', head: '#fb8c00' }
+            '宽容-计分-嘴炮-好运': { body: '#ff6b6b', head: '#ff8787' },
+            '宽容-计分-嘴炮-运营': { body: '#ffa94d', head: '#ffc078' },
+            '宽容-计分-自闭-好运': { body: '#ffd43b', head: '#ffe066' },
+            '宽容-计分-自闭-运营': { body: '#74c0fc', head: '#a5d8ff' },
+            '宽容-故事-嘴炮-好运': { body: '#ff8787', head: '#ffa8a8' },
+            '宽容-故事-嘴炮-运营': { body: '#69db7c', head: '#8ce99a' },
+            '宽容-故事-自闭-好运': { body: '#da77f2', head: '#e599f7' },
+            '宽容-故事-自闭-运营': { body: '#a78bfa', head: '#b197fc' },
+            '卡人-计分-嘴炮-好运': { body: '#f06595', head: '#f783ac' },
+            '卡人-计分-嘴炮-运营': { body: '#e03131', head: '#f03e3e' },
+            '卡人-计分-自闭-好运': { body: '#868e96', head: '#adb5bd' },
+            '卡人-计分-自闭-运营': { body: '#495057', head: '#5c636a' },
+            '卡人-故事-嘴炮-好运': { body: '#fab005', head: '#fcc419' },
+            '卡人-故事-嘴炮-运营': { body: '#be4bdb', head: '#cc5de8' },
+            '卡人-故事-自闭-好运': { body: '#22b8cf', head: '#3bc9db' },
+            '卡人-故事-自闭-运营': { body: '#339af0', head: '#4dabf7' }
         };
 
         // 段位计算
-        function getRank(mbti) {
-            // 根据MBTI特征计算"桌游段位"
-            const ranks = {
-                'INTJ': { rank: '钻石桌游玩家', class: 'diamond', icon: '💎' },
-                'INTP': { rank: '钻石桌游玩家', class: 'diamond', icon: '💎' },
-                'ENTJ': { rank: '王者桌游玩家', class: 'master', icon: '👑' },
-                'ENTP': { rank: '王者桌游玩家', class: 'master', icon: '👑' },
-                'INFJ': { rank: '铂金桌游玩家', class: 'platinum', icon: '🥈' },
-                'INFP': { rank: '黄金桌游玩家', class: 'gold', icon: '🥇' },
-                'ENFJ': { rank: '铂金桌游玩家', class: 'platinum', icon: '🥈' },
-                'ENFP': { rank: '黄金桌游玩家', class: 'gold', icon: '🥇' },
-                'ISTJ': { rank: '铂金桌游玩家', class: 'platinum', icon: '🥈' },
-                'ISFJ': { rank: '黄金桌游玩家', class: 'gold', icon: '🥇' },
-                'ESTJ': { rank: '铂金桌游玩家', class: 'platinum', icon: '🥈' },
-                'ESFJ': { rank: '黄金桌游玩家', class: 'gold', icon: '🥇' },
-                'ISTP': { rank: '钻石桌游玩家', class: 'diamond', icon: '💎' },
-                'ISFP': { rank: '黄金桌游玩家', class: 'gold', icon: '🥇' },
-                'ESTP': { rank: '钻石桌游玩家', class: 'diamond', icon: '💎' },
-                'ESFP': { rank: '黄金桌游玩家', class: 'gold', icon: '🥇' }
-            };
-            return ranks[mbti];
+        function getRank(personalityKey) {
+            const data = personalityData[personalityKey];
+            const isCarding = personalityKey.includes('卡人');
+            const isStory = personalityKey.includes('故事');
+            if (isCarding && isStory) {
+                return { rank: '暗黑系玩家', class: 'diamond', icon: '🌑' };
+            } else if (isCarding) {
+                return { rank: '策略系玩家', class: 'platinum', icon: '⚔️' };
+            } else if (isStory) {
+                return { rank: '故事系玩家', class: 'gold', icon: '📖' };
+            } else {
+                return { rank: '佛系玩家', class: 'silver', icon: '☕' };
+            }
         }
 
         // 计算雷达图数据
-        function getRadarData(mbti) {
-            // 策略(T), 社交(E), 运气(P), 耐心(J), 创意(N)
-            const data = {
-                'INTJ': [95, 30, 40, 90, 70],
-                'INTP': [90, 35, 50, 60, 85],
-                'ENTJ': [92, 88, 45, 85, 65],
-                'ENTP': [75, 90, 70, 40, 95],
-                'INFJ': [70, 60, 40, 80, 75],
-                'INFP': [50, 55, 55, 45, 95],
-                'ENFJ': [65, 95, 50, 70, 75],
-                'ENFP': [50, 92, 80, 30, 90],
-                'ISTJ': [85, 25, 35, 95, 40],
-                'ISFJ': [55, 45, 40, 88, 50],
-                'ESTJ': [88, 80, 35, 90, 45],
-                'ESFJ': [45, 88, 55, 75, 50],
-                'ISTP': [82, 30, 75, 50, 70],
-                'ISFP': [40, 50, 65, 40, 88],
-                'ESTP': [70, 85, 92, 35, 75],
-                'ESFP': [30, 90, 88, 25, 80]
-            };
-            return data[mbti];
+        function getRadarData(personalityKey) {
+            // 风格宽容度, 故事沉浸度, 社交活跃度, 运气依赖度
+            const parts = personalityKey.split('-');
+            const isKuanRong = parts[0] === '宽容';
+            const isStory = parts[1] === '故事';
+            const isZuiPao = parts[2] === '嘴炮';
+            const isHaoYun = parts[3] === '好运';
+
+            return [
+                isKuanRong ? 80 : 20,  // 风格宽容度
+                isStory ? 85 : 25,     // 故事沉浸度
+                isZuiPao ? 90 : 15,    // 社交活跃度
+                isHaoYun ? 80 : 25,    // 运气依赖度
+                !isHaoYun ? 85 : 30    // 运营策略度
+            ];
         }
 
         // 绘制雷达图
-        function drawRadarChart(mbti) {
+        function drawRadarChart(personalityKey) {
             const canvas = document.getElementById('radarCanvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
@@ -1423,8 +1431,8 @@
             const cx = w / 2;
             const cy = h / 2;
             const maxR = 100;
-            const labels = ['策略', '社交', '运气', '耐心', '创意'];
-            const data = getRadarData(mbti);
+            const labels = ['风格宽容度', '故事沉浸度', '社交活跃度', '运气依赖度', '运营策略度'];
+            const data = getRadarData(personalityKey);
             const maxVal = 100;
             const angleStep = (Math.PI * 2) / 5;
 
@@ -1459,9 +1467,10 @@
             }
 
             // 绘制数据区域
+            const pColor = personalityData[personalityKey].color;
             ctx.beginPath();
-            ctx.fillStyle = 'rgba(102, 187, 106, 0.3)';
-            ctx.strokeStyle = '#2e7d32';
+            ctx.fillStyle = pColor + '40';
+            ctx.strokeStyle = pColor;
             ctx.lineWidth = 2;
             for (let i = 0; i < 5; i++) {
                 const angle = i * angleStep - Math.PI / 2;
@@ -1483,12 +1492,12 @@
                 const y = cy + r * Math.sin(angle);
                 ctx.beginPath();
                 ctx.arc(x, y, 5, 0, Math.PI * 2);
-                ctx.fillStyle = '#2e7d32';
+                ctx.fillStyle = pColor;
                 ctx.fill();
             }
 
             // 绘制标签
-            ctx.font = '14px -apple-system, sans-serif';
+            ctx.font = '13px -apple-system, sans-serif';
             ctx.fillStyle = '#333';
             ctx.textAlign = 'center';
             for (let i = 0; i < 5; i++) {
@@ -1500,51 +1509,130 @@
             }
         }
 
-        let quizMode = 'mbti'; // 'mbti' 或 'pro'
+        let quizMode = 'mbti'; // 'mbti' 或 'pro' 或 'guess'
         let proScore = 0;
+        let guessScore = 0;
+        let guessResults = []; // 记录每道题的答题情况
 
-        // 桌游老炮段位测试题目
+        // 表情包猜桌游题目（用表情包形式猜桌游）
+        const guessQuestions = [
+            {
+                meme: { top: "开局时", emoji: "🏝️", middle: "骰出7后", bottom: "你的心态", bottomEmoji: "💀" },
+                answer: "卡坦岛",
+                options: ["卡坦岛", "璀璨宝石", "殖民火星", "铁路环游"]
+            },
+            {
+                meme: { top: "攒了5颗", emoji: "💎💎💎💎", middle: "一回合后", bottom: "被截胡了", bottomEmoji: "😭" },
+                answer: "璀璨宝石",
+                options: ["卡坦岛", "璀璨宝石", "卡卡颂", "七大奇迹"]
+            },
+            {
+                meme: { top: "火车长", emoji: "🚂🚂🚂", middle: "终点没到", bottom: "没车厢了", bottomEmoji: "🤡" },
+                answer: "铁路环游",
+                options: ["大西铁路", "铁路环游", "工业革命", "蒸汽时代"]
+            },
+            {
+                meme: { top: "抽到一张", emoji: "🐦", middle: "又抽到一张", bottom: "全是鸟", bottomEmoji: "😶" },
+                answer: "展翅翱翔",
+                options: ["瘟疫危机", "展翅翱翔", "农场主", "奥丁的盛宴"]
+            },
+            {
+                meme: { top: "抽到一块", emoji: "🏰", middle: "又一块", bottom: "放不下了", bottomEmoji: "🤔" },
+                answer: "卡卡颂",
+                options: ["卡卡颂", "卡坦岛", "七大奇迹", "勃艮第城堡"]
+            },
+            {
+                meme: { top: "对面打了", emoji: "🇺🇸🇺", middle: "古巴导弹", bottom: "核战了", bottomEmoji: "☢️" },
+                answer: "冷战热斗",
+                options: ["冷战热斗", "三国杀", "政变", "风声"]
+            },
+            {
+                meme: { top: "播种", emoji: "🌾", middle: "收割", bottom: "饿死了", bottomEmoji: "💀" },
+                answer: "农场主",
+                options: ["农场主", "奥丁的盛宴", "瘟疫危机", "展翅翱翔"]
+            },
+            {
+                meme: { top: "骰子全", emoji: "🎲🎲", middle: "还是不行", bottom: "没鱼吃", bottomEmoji: "🐟❌" },
+                answer: "奥丁的盛宴",
+                options: ["奥丁的盛宴", "展翅翱翔", "农场主", "血染钟楼"]
+            },
+            {
+                meme: { top: "探索地城", emoji: "🗡️🛡️", middle: "san值", bottom: "掉光了", bottomEmoji: "🧠" },
+                answer: "诡镇奇谈：卡牌版",
+                options: ["诡镇奇谈：卡牌版", "疯狂诡宅", "瘟疫危机", "灵迹岛"]
+            },
+            {
+                meme: { top: "建金字塔", emoji: "🏛️", middle: "造奇观", bottom: "被抢了", bottomEmoji: "😤" },
+                answer: "历史巨轮",
+                options: ["历史巨轮", "殖民火星", "领国者", "伯明翰"]
+            },
+            {
+                meme: { top: "掷骰子", emoji: "🎲", middle: "再掷", bottom: "还是不行", bottomEmoji: "🙃" },
+                answer: "马可波罗2：可汗的托付",
+                options: ["重塑火星", "沙丘：帝国", "马可波罗2：可汗的托付", "星际牛仔"]
+            },
+            {
+                meme: { top: "说书人", emoji: "📖", middle: "出题", bottom: "全猜对了", bottomEmoji: "🎯" },
+                answer: "只言片语",
+                options: ["只言片语", "传情画意", "行动代号", "猜心俱乐部"]
+            },
+            {
+                meme: { top: "狼人跳了", emoji: "🐺", middle: "村民投票", bottom: "投错了", bottomEmoji: "😱" },
+                answer: "阿瓦隆",
+                options: ["阿瓦隆", "三国杀", "政变", "血染钟楼"]
+            },
+            {
+                meme: { top: "工人放哪", emoji: "👷", middle: "这格那格", bottom: "纠结死了", bottomEmoji: "🤯" },
+                answer: "灵迹岛",
+                options: ["灵迹岛", "勃艮第城堡", "农场主", "大西铁路"]
+            },
+            {
+                meme: { top: "合作抗疫", emoji: "🦠", middle: "疫情爆发", bottom: "又炸了", bottomEmoji: "💥" },
+                answer: "瘟疫危机",
+                options: ["瘟疫危机", "诡镇奇谈", "幽港迷城", "全球惊悚"]
+            }
+        ];
         const proQuestions = [
-            { text: "标准原版卡坦岛基础版图，以下说法正确的是？", options: [{ text: "有数字7的资源地块", correct: false }, { text: "数字只有2-6、8-12，无7号资源地块", correct: true }, { text: "数字7固定在沙漠", correct: false }, { text: "海岛版图才有数字7", correct: false }] },
-            { text: "璀璨宝石基础版，宝石持有上限为？", options: [{ text: "8颗", correct: false }, { text: "9颗", correct: false }, { text: "10颗", correct: true }, { text: "无上限", correct: false }] },
-            { text: "政变基础版中，哪个角色无法防御暗杀？", options: [{ text: "大使", correct: false }, { text: "将军", correct: false }, { text: "刺客", correct: true }, { text: "公爵", correct: false }] },
-            { text: "圣托里尼4人规则中，玩家每回合标准行动流程是？", options: [{ text: "移动1个工人+建造1次", correct: true }, { text: "移动2个工人+各建一次", correct: false }, { text: "只能建造不能移动", correct: false }, { text: "可无限移动再建造", correct: false }] },
-            { text: "农场主Agricola原版标准支持玩家人数为？", options: [{ text: "1-4人", correct: false }, { text: "2-5人", correct: true }, { text: "2-6人", correct: false }, { text: "3-4人", correct: false }] },
-            { text: "奥丁的盛宴不包含以下哪种核心机制？", options: [{ text: "工人放置", correct: false }, { text: "资源转换", correct: false }, { text: "卡牌轮抽", correct: false }, { text: "骰子对战", correct: true }] },
-            { text: "勃艮第城堡基础规则核心机制描述正确的是？", options: [{ text: "可随意重投全部骰子", correct: false }, { text: "骰子点数对应地块类型", correct: true }, { text: "全程不使用骰子", correct: false }, { text: "可以无视点数任选地块", correct: false }] },
-            { text: "大西铁路基础规则以下说法正确的是？", options: [{ text: "可抢占他人专属铁路线", correct: false }, { text: "含有工人放置机制", correct: true }, { text: "只有金币一种资源", correct: false }, { text: "无版图拼接环节", correct: false }] },
-            { text: "诡镇奇谈卡牌版所属官方桌游品类是？", options: [{ text: "TCG", correct: false }, { text: "LCG", correct: true }, { text: "DBG", correct: false }, { text: "骰子驱美式", correct: false }] },
-            { text: "幽港迷城基础版初始可选职业数量为？", options: [{ text: "12个", correct: true }, { text: "16个", correct: false }, { text: "20个", correct: false }, { text: "8个", correct: false }] },
-            { text: "冷战热斗标准对局共有几个固定计分回合？", options: [{ text: "3个", correct: true }, { text: "4个", correct: false }, { text: "5个", correct: false }, { text: "2个", correct: false }] },
-            { text: "冷战热斗中哪张卡不会触发太空竞赛结算？", options: [{ text: "古巴导弹危机", correct: false }, { text: "太空竞赛", correct: false }, { text: "猪湾事件", correct: false }, { text: "阿富汗战争", correct: true }] },
-            { text: "LCG与TCG最核心本质区别是？", options: [{ text: "画风差异", correct: false }, { text: "LCG固定配置无随机卡包，TCG抽包随机", correct: true }, { text: "游玩人数不同", correct: false }, { text: "有无骰子机制", correct: false }] },
-            { text: "桌游「轮抽Draft」机制核心定义是？", options: [{ text: "抢占行动格", correct: false }, { text: "选一张手牌传递剩余卡牌依次挑选", correct: true }, { text: "掷骰定顺序", correct: false }, { text: "区域占领得分", correct: false }] },
-            { text: "下列属于无骰子、纯策略零随机德策的是？", options: [{ text: "赛马大亨", correct: true }, { text: "大富翁", correct: false }, { text: "勃艮第城堡", correct: false }, { text: "璀璨宝石", correct: false }] },
-            { text: "桌游圣托里尼的设计师是？", options: [{ text: "Matt Leacock", correct: false }, { text: "Gordon Hamilton", correct: true }, { text: "Uwe Rosenberg", correct: false }, { text: "Eric Lang", correct: false }] },
-            { text: "展翅翱翔基础版鸟卡规则描述正确的是？", options: [{ text: "全为正向无负面效果", correct: false }, { text: "存在带负面触发效果的鸟卡", correct: true }, { text: "所有鸟卡立刻得分", correct: false }, { text: "鸟卡无法连锁触发", correct: false }] },
-            { text: "权力的游戏桌游二版铁王座顺位第一判定优先级是？", options: [{ text: "金币数量", correct: false }, { text: "兵力多少", correct: false }, { text: "王座自身顺位", correct: true }, { text: "手牌数量", correct: false }] },
-            { text: "卡坦岛基础版图一共有几块沙漠板块？", options: [{ text: "1块", correct: true }, { text: "2块", correct: false }, { text: "3块", correct: false }, { text: "0块", correct: false }] },
-            { text: "璀璨宝石进阶卡牌一共分为几个等级？", options: [{ text: "2个", correct: false }, { text: "3个", correct: true }, { text: "4个", correct: false }, { text: "5个", correct: false }] },
-            { text: "农场主原版每名玩家开局初始手牌数量为？", options: [{ text: "7张", correct: false }, { text: "9张", correct: true }, { text: "10张", correct: false }, { text: "12张", correct: false }] },
-            { text: "冷战热斗整局游戏一共分为几个阶段？", options: [{ text: "2阶段", correct: false }, { text: "3阶段", correct: false }, { text: "4阶段", correct: true }, { text: "5阶段", correct: false }] },
-            { text: "疯狂诡宅属于哪类核心桌游品类？", options: [{ text: "LCG", correct: false }, { text: "美式叙事恐怖桌游", correct: true }, { text: "德式策略", correct: false }, { text: "DBG牌库构筑", correct: false }] },
-            { text: "下列哪款不是Uwe Rosenberg的作品？", options: [{ text: "洞穴农夫", correct: false }, { text: "展翅翱翔", correct: true }, { text: "奥丁盛宴", correct: false }, { text: "农场主", correct: false }] },
-            { text: "政变基础版一共包含几种角色？", options: [{ text: "4种", correct: false }, { text: "5种", correct: true }, { text: "6种", correct: false }, { text: "7种", correct: false }] },
-            { text: "勃艮第城堡每回合玩家投掷骰子数量为？", options: [{ text: "2颗", correct: false }, { text: "3颗", correct: false }, { text: "4颗", correct: true }, { text: "5颗", correct: false }] },
-            { text: "帝国曙光核心机制不包含以下哪种？", options: [{ text: "区域控制", correct: false }, { text: "科技研发", correct: false }, { text: "工人放置", correct: true }, { text: "星际扩张", correct: false }] },
-            { text: "诡镇奇谈卡牌版每局玩家常规san值初始上限为？", options: [{ text: "5", correct: false }, { text: "6", correct: false }, { text: "7", correct: true }, { text: "8", correct: false }] },
-            { text: "经典桌游马可波罗游记核心机制是？", options: [{ text: "骰子赋值", correct: true }, { text: "纯轮抽", correct: false }, { text: "区域占领", correct: false }, { text: "卡牌构筑", correct: false }] },
-            { text: "下列哪款是DBG牌库构筑开山代表作？", options: [{ text: "璀璨宝石", correct: false }, { text: "皇舆争霸", correct: true }, { text: "农场主", correct: false }, { text: "圣托里尼", correct: false }] },
-            { text: "权力的游戏桌游二版单局常规胜利条件是？", options: [{ text: "占领7座城池", correct: true }, { text: "占领5座城池", correct: false }, { text: "金币第一", correct: false }, { text: "兵力第一", correct: false }] },
-            { text: "桌游术语「行动顺位」指的是？", options: [{ text: "按座位顺序固定行动", correct: false }, { text: "通过竞价/头衔决定每回合行动先后", correct: true }, { text: "掷骰子定顺序", correct: false }, { text: "自由随意行动", correct: false }] },
-            { text: "全球惊悚属于什么题材桌游？", options: [{ text: "科幻星际", correct: false }, { text: "克苏鲁全球灾变", correct: true }, { text: "中世纪德策", correct: false }, { text: "经济经营", correct: false }] },
-            { text: "卡坦岛中强盗被移出版图的触发条件是？", options: [{ text: "投出7点", correct: false }, { text: "玩家使用卡牌效果", correct: true }, { text: "版图无资源可抢", correct: false }, { text: "回合结束自动移除", correct: false }] },
-            { text: "璀璨宝石中贵族卡牌获取方式是？", options: [{ text: "花费宝石直接购买", correct: false }, { text: "满足对应资源门槛自动来访得分", correct: true }, { text: "轮抽获得", correct: false }, { text: "手牌兑换", correct: false }] },
-            { text: "下列哪款桌游不含工人放置机制？", options: [{ text: "大西铁路", correct: false }, { text: "奥丁盛宴", correct: false }, { text: "圣托里尼", correct: true }, { text: "农场主", correct: false }] },
-            { text: "冷战热斗中美国起始优势区域在哪？", options: [{ text: "欧洲", correct: false }, { text: "亚洲", correct: false }, { text: "美洲", correct: true }, { text: "非洲", correct: false }] },
-            { text: "桌游「可变玩家能力」机制指的是？", options: [{ text: "每局玩家专属角色能力不同", correct: true }, { text: "骰子点数改变能力", correct: false }, { text: "卡牌随机变强", correct: false }, { text: "人数不同规则不同", correct: false }] },
-            { text: "幽港迷城游玩属性更偏向？", options: [{ text: "重度德策", correct: false }, { text: "美式合作剧情跑团", correct: true }, { text: "聚会毛线", correct: false }, { text: "抽象棋类", correct: false }] },
-            { text: "下列哪款属于纯聚会毛线桌游而非重策？", options: [{ text: "农场主", correct: false }, { text: "大西铁路", correct: false }, { text: "只言片语", correct: true }, { text: "勃艮第城堡", correct: false }] }
+            { text: "DBG是什么？", options: [{ text: "一种卡牌游戏机制", correct: true }, { text: "某款桌游里的术语", correct: false }, { text: "一种桌游策略", correct: false }, { text: "一种桌游胜利条件的说法", correct: false }] },
+            { text: "璀璨宝石的核心玩法属于哪一类？", options: [{ text: "牌库构筑", correct: false }, { text: "资源收集 + 卡牌分数", correct: true }, { text: "区域打仗占地", correct: false }, { text: "身份推理骗人", correct: false }] },
+            { text: "桌游LCG和TCG最大的区别在于？", options: [{ text: "画风好不好看", correct: false }, { text: "是否随机抽卡包", correct: true }, { text: "能不能多人玩", correct: false }, { text: "有没有版图", correct: false }] },
+            { text: "政变这款桌游核心是什么玩法？", options: [{ text: "合作解谜", correct: false }, { text: "身份吹牛 + 心理博弈", correct: true }, { text: "工人放置种田", correct: false }, { text: "骰子打怪闯关", correct: false }] },
+            { text: "以下哪款属于典型德式策略桌游（德策）？", options: [{ text: "洞穴农夫", correct: true }, { text: "赌命大赛", correct: false }, { text: "诺丁汉警长", correct: false }, { text: "污痕圣杯", correct: false }] },
+            { text: "以下哪款属于身份推理类桌游？", options: [{ text: "花间小路", correct: false }, { text: "拉斯维加斯", correct: false }, { text: "冰冷的她醒来之前", correct: true }, { text: "龙翼翱翔", correct: false }] },
+            { text: "轮抽（Draft）桌游机制的核心是？", options: [{ text: "掷骰子走步数", correct: false }, { text: "选一张牌、剩下传给下家", correct: true }, { text: "占领版图格子", correct: false }, { text: "花钱买卡牌", correct: false }] },
+            { text: "诡镇奇谈主要是什么题材？", options: [{ text: "中世纪经营", correct: false }, { text: "克苏鲁恐怖叙事", correct: true }, { text: "星际战争", correct: false }, { text: "现代经商", correct: false }] },
+            { text: "只言片语属于什么类型桌游？", options: [{ text: "重度策略", correct: false }, { text: "聚会脑洞猜词", correct: true }, { text: "硬核战棋", correct: false }, { text: "工人放置种田", correct: false }] },
+            { text: "桌游「工人放置」机制通俗理解是？", options: [{ text: "抢格子干活拿资源", correct: true }, { text: "掷骰子决定行动", correct: false }, { text: "互相骗身份", correct: false }, { text: "组队打BOSS", correct: false }] },
+            { text: "冷战热斗整体属于哪类桌游？", options: [{ text: "轻松聚会毛线", correct: false }, { text: "双人硬核策略对战", correct: true }, { text: "猜词脑洞", correct: false }, { text: "合作逃生", correct: false }] },
+            { text: "以下哪款不是合作类桌游？", options: [{ text: "瘟疫危机", correct: false }, { text: "幽港迷城", correct: false }, { text: "政变", correct: true }, { text: "全球惊悚", correct: false }] },
+            { text: "圣托里尼最核心的玩法亮点是？", options: [{ text: "大量卡牌组合", correct: false }, { text: "立体建塔 + 极简策略对战", correct: true }, { text: "资源囤货攒分", correct: false }, { text: "身份隐藏骗人", correct: false }] },
+            { text: "DBG牌库构筑桌游的核心特点是？", options: [{ text: "开局固定手牌不变", correct: false }, { text: "对局中不断买牌优化自己牌库", correct: true }, { text: "靠占地得分", correct: false }, { text: "靠吹牛获胜", correct: false }] },
+            { text: "阿瓦隆这类桌游最看重什么？", options: [{ text: "计算资源数值", correct: false }, { text: "逻辑推理 + 话术博弈", correct: true }, { text: "骰子运气", correct: false }, { text: "版图布局", correct: false }] },
+            { text: "以下哪款属于美式桌游风格？", options: [{ text: "图拉真", correct: false }, { text: "神秘大地", correct: false }, { text: "疯狂诡宅", correct: true }, { text: "拉格兰哈庄园", correct: false }] },
+            { text: "德式策略桌游普遍特点是？", options: [{ text: "重剧情、重角色扮演", correct: false }, { text: "重计算、少运气、重规划", correct: true }, { text: "全靠吹牛撒谎", correct: false }, { text: "大量随机骰子", correct: false }] },
+            { text: "聚会毛线桌游的主要特点是？", options: [{ text: "规则极复杂、对局几小时", correct: false }, { text: "上手快、欢乐互动、不烧脑", correct: true }, { text: "全是单人游玩", correct: false }, { text: "需要大量卡牌记牌", correct: false }] },
+            { text: "权力的游戏桌游核心机制包含？", options: [{ text: "区域控制 + 外交密谋", correct: true }, { text: "纯猜词互动", correct: false }, { text: "种田养动物", correct: false }, { text: "牌库构筑抽卡", correct: false }] },
+            { text: "展翅翱翔桌游的主题和玩法是？", options: [{ text: "战争占地打仗", correct: false }, { text: "收集鸟类卡牌组构筑计分", correct: true }, { text: "身份推理骗人", correct: false }, { text: "骰子闯关冒险", correct: false }] },
+            { text: "桌游「区域控制」机制指的是？", options: [{ text: "抢版图地盘获得分数或胜利", correct: true }, { text: "轮流选行动格子", correct: false }, { text: "传牌选卡", correct: false }, { text: "猜别人身份", correct: false }] },
+            { text: "以下哪款最适合纯新手入门？", options: [{ text: "发明简史", correct: false }, { text: "卡卡颂", correct: true }, { text: "奥丁盛宴", correct: false }, { text: "大魔术师", correct: false }] },
+            { text: "诡镇奇谈卡牌版属于哪种发行模式？", options: [{ text: "TCG随机抽包", correct: false }, { text: "LCG固定扩展", correct: true }, { text: "一次性无扩展", correct: false }, { text: "绝版不再复刻", correct: false }] },
+            { text: "双人桌游更适合下面哪一款？", options: [{ text: "看板", correct: false }, { text: "炸弹克星", correct: true }, { text: "只言片语", correct: false }, { text: "天合小队", correct: false }] },
+            { text: "桌游里「可变玩家能力」指的是？", options: [{ text: "每局每个人角色特长不一样", correct: true }, { text: "骰子越投越强", correct: false }, { text: "卡牌数量随机变化", correct: false }, { text: "规则随时可以改", correct: false }] },
+            { text: "以下哪款不属于重策桌游？", options: [{ text: "农场主", correct: false }, { text: "矮人掘金", correct: true }, { text: "帝国曙光", correct: false }, { text: "奥地利大饭店", correct: false }] },
+            { text: "瘟疫危机的核心玩法是？", options: [{ text: "互相对战抢分", correct: false }, { text: "全员合作拯救世界抗疫", correct: true }, { text: "身份隐藏互坑", correct: false }, { text: "立体建造拼图", correct: false }] },
+            { text: "璀璨宝石里贵族卡牌的作用是？", options: [{ text: "干扰对手扣分", correct: false }, { text: "满足条件免费拿分数", correct: true }, { text: "直接干掉对手资源", correct: false }, { text: "更换游戏规则", correct: false }] },
+            { text: "经典桌游大西铁路主题接近？", options: [{ text: "铁路经营 + 路线规划", correct: true }, { text: "海岛资源开荒", correct: false }, { text: "魔法打怪升级", correct: false }, { text: "猜词画画互动", correct: false }] },
+            { text: "桌游「行动点」机制的意思是？", options: [{ text: "每回合有固定点数分配做事情", correct: true }, { text: "掷骰子决定走几步", correct: false }, { text: "传牌轮流选卡", correct: false }, { text: "靠聊天获得分数", correct: false }] },
+            { text: "以下哪种不属于桌游主流分类？", options: [{ text: "德策", correct: false }, { text: "美式", correct: false }, { text: "毛线聚会", correct: false }, { text: "电子竞技", correct: true }] },
+            { text: "疯狂诡宅主打体验是？", options: [{ text: "经营种田算账", correct: false }, { text: "剧情探索 + 恐怖解谜", correct: true }, { text: "资源囤货攒分", correct: false }, { text: "外交谈判占地", correct: false }] },
+            { text: "卡坦岛获胜关键主要靠？", options: [{ text: "纯运气掷骰子", correct: false }, { text: "资源交易 + 版图规划", correct: true }, { text: "隐藏身份骗人", correct: false }, { text: "卡牌连锁套路", correct: false }] },
+            { text: "下面哪一个是身份类桌游的核心乐趣？", options: [{ text: "精密数学计算", correct: false }, { text: "隐藏身份、推理敌我", correct: true }, { text: "搭建立体模型", correct: false }, { text: "长时间资源积累", correct: false }] },
+            { text: "工人放置类桌游常见玩法是？", options: [{ text: "抢有限行动格子，规划回合节奏", correct: true }, { text: "不停抽卡打牌", correct: false }, { text: "互相吹牛投票", correct: false }, { text: "掷骰子打怪", correct: false }] },
+            { text: "幽港迷城更适合哪种游玩偏好？", options: [{ text: "喜欢欢乐猜词", correct: false }, { text: "喜欢长线剧情合作闯关", correct: true }, { text: "喜欢快速对战10分钟一局", correct: false }, { text: "喜欢纯数值算账", correct: false }] },
+            { text: "桌游扩展包的主要作用是？", options: [{ text: "修改基础规则彻底大变样", correct: false }, { text: "增加新卡牌、角色、版图丰富玩法", correct: true }, { text: "只能换皮肤画风", correct: false }, { text: "降低游戏难度给新手", correct: false }] },
+            { text: "以下哪款是典型聚会暖场桌游？", options: [{ text: "奥丁的盛宴", correct: false }, { text: "传情画意", correct: true }, { text: "卡拉拉皇宫", correct: false }, { text: "诡镇奇谈", correct: false }] },
+            { text: "德策和美式桌游最大区别是？", options: [{ text: "一个有版图一个没版图", correct: false }, { text: "德策重策略计算，美式重剧情冒险", correct: true }, { text: "一个能多人一个只能双人", correct: false }, { text: "一个有骰子一个没骰子", correct: false }] },
+            { text: "新手入坑桌游最合理的顺序是？", options: [{ text: "直接上伯明翰、盖亚计划", correct: false }, { text: "先聚会毛线→经典中度→再重度德策/美式", correct: true }, { text: "只玩身份类不玩其他", correct: false }, { text: "只玩重策不玩轻松局", correct: false }] }
         ];
 
         // 桌游段位结果（青铜→王者）
@@ -1652,6 +1740,9 @@
             return arr;
         }
 
+        // 当前人格key（用于分享）
+        let currentPersonalityKey = '';
+
         // 从游戏池中随机选2个不重复的
         function pickRandomGames(pool) {
             const shuffled = shuffle(pool);
@@ -1662,10 +1753,11 @@
             quizMode = 'mbti';
             questions = shuffle(allQuestions).slice(0, 10);
             currentQuestion = 0;
-            scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+            scores = { 宽容:0, 卡人:0, 计分:0, 故事:0, 嘴炮:0, 自闭:0, 好运:0, 运营:0 };
 
             document.getElementById('welcomePage').style.display = 'none';
             document.getElementById('quizPage').style.display = 'flex';
+            document.getElementById('backHomeBtn').style.display = 'block';
             showQuestion();
         }
 
@@ -1675,20 +1767,56 @@
             currentQuestion = 0;
             proScore = 0;
 
+            // 清理线索卡片
+            const existingHint = document.getElementById('guessHintContainer');
+            if (existingHint) existingHint.remove();
+
             document.getElementById('welcomePage').style.display = 'none';
             document.getElementById('quizPage').style.display = 'flex';
+            document.getElementById('backHomeBtn').style.display = 'block';
             showQuestion();
         }
 
+        function startGuessGame() {
+            quizMode = 'guess';
+            questions = shuffle(guessQuestions).slice(0, 10);
+            currentQuestion = 0;
+            guessScore = 0;
+            guessResults = [];
+
+            // 清理线索卡片
+            const existingHint = document.getElementById('guessHintContainer');
+            if (existingHint) existingHint.remove();
+
+            document.getElementById('welcomePage').style.display = 'none';
+            document.getElementById('quizPage').style.display = 'flex';
+            document.getElementById('backHomeBtn').style.display = 'block';
+            showQuestion();
+        }
+
+        function goHome() {
+            // 清理所有状态
+            const existingHint = document.getElementById('guessHintContainer');
+            if (existingHint) existingHint.remove();
+
+            document.getElementById('quizPage').style.display = 'none';
+            document.getElementById('resultPage').style.display = 'none';
+            document.getElementById('welcomePage').style.display = 'flex';
+            document.getElementById('backHomeBtn').style.display = 'none';
+        }
+
+        // 显示题目
         function showQuestion() {
             const q = questions[currentQuestion];
             document.getElementById('questionNum').textContent = `第 ${currentQuestion + 1}/10 题`;
-            document.getElementById('questionText').textContent = q.text;
 
             const optionsContainer = document.querySelector('.options');
             optionsContainer.innerHTML = '';
 
             if (quizMode === 'mbti') {
+                document.getElementById('questionText').textContent = q.text;
+                document.getElementById('questionText').style.display = 'block';
+
                 const btnA = document.createElement('button');
                 btnA.className = 'option-btn';
                 btnA.textContent = 'A. ' + q.A.text;
@@ -1700,12 +1828,48 @@
                 btnB.textContent = 'B. ' + q.B.text;
                 btnB.onclick = () => selectOption('B');
                 optionsContainer.appendChild(btnB);
-            } else {
+            } else if (quizMode === 'pro') {
+                document.getElementById('questionText').textContent = q.text;
+                document.getElementById('questionText').style.display = 'block';
+
                 q.options.forEach((opt, index) => {
                     const btn = document.createElement('button');
                     btn.className = 'option-btn';
                     btn.textContent = ['A', 'B', 'C', 'D'][index] + '. ' + opt.text;
                     btn.onclick = () => selectProOption(index);
+                    optionsContainer.appendChild(btn);
+                });
+            } else {
+                // 表情包猜桌游模式
+                document.getElementById('questionText').style.display = 'none';
+
+                // 创建表情包卡片
+                const m = q.meme;
+                let hintHTML = '<div class="guess-meme-card">';
+                hintHTML += '<div class="meme-top">' + m.top + '</div>';
+                hintHTML += '<div class="meme-emoji">' + m.emoji + '</div>';
+                hintHTML += '<div class="meme-divider"></div>';
+                hintHTML += '<div class="meme-bottom">' + m.bottom + '</div>';
+                hintHTML += '<div class="meme-bottom-emoji">' + m.bottomEmoji + '</div>';
+                hintHTML += '<div class="guess-meme-label">🎲 猜这是哪款桌游？</div>';
+                hintHTML += '</div>';
+
+                // 在选项容器前插入表情包卡片
+                const quizPage = document.getElementById('quizPage');
+                const existingHint = document.getElementById('guessHintContainer');
+                if (existingHint) existingHint.remove();
+
+                const hintContainer = document.createElement('div');
+                hintContainer.id = 'guessHintContainer';
+                hintContainer.innerHTML = hintHTML;
+                quizPage.insertBefore(hintContainer, document.querySelector('.question-card'));
+
+                // 4个选项
+                q.options.forEach((opt, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.textContent = ['A', 'B', 'C', 'D'][index] + '. ' + opt;
+                    btn.onclick = () => selectGuessOption(index);
                     optionsContainer.appendChild(btn);
                 });
             }
@@ -1751,59 +1915,261 @@
             }
         }
 
-        function showResult() {
-            if (quizMode === 'mbti') {
-                showMBTIResult();
+        function selectGuessOption(index) {
+            const q = questions[currentQuestion];
+            const selected = q.options[index];
+            const correct = selected === q.answer;
+
+            if (correct) guessScore += 1;
+
+            // 记录答题情况
+            guessResults.push({
+                question: currentQuestion + 1,
+                answer: q.answer,
+                yours: selected,
+                correct: correct
+            });
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                showQuestion();
             } else {
-                showProResult();
+                showResult();
             }
         }
 
+        function showResult() {
+            if (quizMode === 'mbti') {
+                showMBTIResult();
+            } else if (quizMode === 'pro') {
+                showProResult();
+            } else {
+                showGuessResult();
+            }
+        }
+
+        // 看图猜桌游结果
+        function showGuessResult() {
+            // 隐藏MBTI和Pro特有元素
+            document.getElementById('rankBadge').style.display = 'none';
+            document.getElementById('classicQuote').style.display = 'none';
+            document.getElementById('personalityDesc').style.display = 'none';
+            document.getElementById('bestPartner').style.display = 'none';
+            document.getElementById('radarSection').style.display = 'none';
+            document.getElementById('proSection').style.display = 'none';
+            document.querySelector('.recommend-section').style.display = 'none';
+
+            // 隐藏所有小人配件
+            document.getElementById('devilHorns').style.display = 'none';
+            document.getElementById('angelWings').style.display = 'none';
+            document.getElementById('bigMouth').style.display = 'none';
+            document.getElementById('hoodie').style.display = 'none';
+            document.getElementById('luckyStars').style.display = 'none';
+            document.getElementById('tools').style.display = 'none';
+            document.getElementById('gems').style.display = 'none';
+            document.getElementById('storyBook').style.display = 'none';
+            document.getElementById('eyesDefault').style.display = 'block';
+            document.getElementById('eyesEvil').style.display = 'none';
+            document.getElementById('eyesShy').style.display = 'none';
+            document.getElementById('eyesStar').style.display = 'none';
+            document.getElementById('mouthDefault').style.display = 'block';
+
+            const mbtiType = document.getElementById('mbtiType');
+            const personalityTitle = document.getElementById('personalityTitle');
+            const catchphrase = document.getElementById('catchphrase');
+
+            // 根据答对题数给出评价
+            let rank, color, desc;
+            if (guessScore >= 9) {
+                rank = '🏆 猜题大师';
+                color = '#ffd700';
+                desc = '桌游图鉴级别！这些封面你肯定都背熟了。';
+            } else if (guessScore >= 7) {
+                rank = '🥇 桌游达人';
+                color = '#d4a017';
+                desc = '对桌游封面很熟悉，偶尔也有猜错的时候。';
+            } else if (guessScore >= 5) {
+                rank = '🥈 桌游爱好者';
+                color = '#9e9e9e';
+                desc = '认识不少桌游，但有些冷门还是猜不出。';
+            } else if (guessScore >= 3) {
+                rank = '🥉 桌游新手';
+                color = '#cd7f32';
+                desc = '认识几款经典桌游，还需要多来店里玩！';
+            } else {
+                rank = '🌱 桌游小白';
+                color = '#81c784';
+                desc = '这些桌游你还没接触过，来酸黄瓜探索新世界吧！';
+            }
+
+            mbtiType.textContent = rank;
+            mbtiType.className = 'mbti-type';
+            mbtiType.style.background = 'none';
+            mbtiType.style.webkitTextFillColor = color;
+            mbtiType.style.textShadow = '0 0 10px ' + color + '40';
+
+            personalityTitle.textContent = '猜对 ' + guessScore + ' / 10 题';
+            personalityTitle.style.color = color;
+            personalityTitle.style.textShadow = 'none';
+
+            catchphrase.textContent = desc;
+            catchphrase.style.color = color;
+            catchphrase.style.fontStyle = 'normal';
+            catchphrase.style.fontWeight = 'bold';
+
+            // 设置小人颜色
+            const avatarBody = document.getElementById('avatarBody');
+            const avatarHead = document.getElementById('avatarHead');
+            if (avatarBody) avatarBody.setAttribute('fill', color);
+            if (avatarHead) avatarHead.setAttribute('fill', color + 'aa');
+
+            // 显示每道题的答题情况
+            let answerHTML = '<div class="guess-answers">';
+            guessResults.forEach((result, index) => {
+                const icon = result.correct ? '✅' : '❌';
+                const correctClass = result.correct ? 'correct' : 'wrong';
+                answerHTML += '<div class="guess-answer-item ' + correctClass + '">';
+                answerHTML += '<span class="answer-q">' + icon + ' 第' + (index + 1) + '题</span>';
+                answerHTML += '<span class="answer-a">正确答案：' + result.answer + '</span>';
+                if (!result.correct) {
+                    answerHTML += '<span class="answer-yours">你的答案：' + result.yours + '</span>';
+                }
+                answerHTML += '</div>';
+            });
+            answerHTML += '</div>';
+
+            // 在推荐桌游区域显示答题详情
+            const recommendSection = document.querySelector('.recommend-section');
+            recommendSection.style.display = 'block';
+            recommendSection.innerHTML = '<h3>📋 答题详情</h3>' + answerHTML;
+
+            // 高段位庆祝彩带
+            if (guessScore >= 7) {
+                createConfetti(color);
+            }
+
+            document.getElementById('quizPage').style.display = 'none';
+            document.getElementById('resultPage').style.display = 'flex';
+        }
+
         function showMBTIResult() {
-            const ei = scores.E >= scores.I ? 'E' : 'I';
-            const sn = scores.S >= scores.N ? 'S' : 'N';
-            const tf = scores.T >= scores.F ? 'T' : 'F';
-            const jp = scores.J >= scores.P ? 'J' : 'P';
-            currentMBTI = ei + sn + tf + jp;
+            // 计算四维人格
+            const style = scores['宽容'] >= scores['卡人'] ? '宽容' : '卡人';
+            const goal = scores['计分'] >= scores['故事'] ? '计分' : '故事';
+            const social = scores['嘴炮'] >= scores['自闭'] ? '嘴炮' : '自闭';
+            const ability = scores['好运'] >= scores['运营'] ? '好运' : '运营';
+            const personalityKey = style + '-' + goal + '-' + social + '-' + ability;
+            currentPersonalityKey = personalityKey;
 
-            const base = personalityBase[currentMBTI];
-            const detail = personalityDetail[currentMBTI];
-            // 从游戏池中随机选2个
-            const games = pickRandomGames(gamePools[currentMBTI]);
+            const p = personalityData[personalityKey];
+            const rankInfo = getRank(personalityKey);
 
-            // 段位
-            const rankInfo = getRank(currentMBTI);
+            // 随机语录
+            const quotes = classicQuotes[personalityKey];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+            // 设置段位
             const rankBadge = document.getElementById('rankBadge');
             rankBadge.className = 'rank-badge ' + rankInfo.class;
             document.getElementById('rankText').textContent = rankInfo.icon + ' ' + rankInfo.rank;
 
-            // 经典语录
-            const quotes = classicQuotes[currentMBTI];
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            // 设置经典语录
             document.getElementById('classicQuote').textContent = randomQuote;
 
-            // 设置小人颜色
-            const meepleColor = meepleColors[currentMBTI];
+            // 设置小人颜色和配件
+            const meepleColor = meepleColors[personalityKey];
             const avatarBody = document.getElementById('avatarBody');
             const avatarHead = document.getElementById('avatarHead');
             if (avatarBody) avatarBody.setAttribute('fill', meepleColor.body);
-            if (avatarHead) avatarHead.setAttribute('fill', meepleColor.head);
+            if (avatarHead) avatarHead.setAttribute('fill', meepleColor.body);
 
-            document.getElementById('mbtiType').textContent = currentMBTI;
-            document.getElementById('personalityTitle').textContent = base.title;
-            document.getElementById('catchphrase').textContent = '"' + base.quote + '"';
-            document.getElementById('personalityDesc').textContent = detail.desc;
-            document.getElementById('bestPartner').textContent = '最佳队友：' + detail.bestPartner;
+            // 根据人格特征切换外观
+            const parts = personalityKey.split('-');
+            const isKuanRong = parts[0] === '宽容';
+            const isStory = parts[1] === '故事';
+            const isZuiPao = parts[2] === '嘴炮';
+            const isHaoYun = parts[3] === '好运';
+
+            // 隐藏所有配件
+            document.getElementById('devilHorns').style.display = 'none';
+            document.getElementById('angelWings').style.display = 'none';
+            document.getElementById('bigMouth').style.display = 'none';
+            document.getElementById('hoodie').style.display = 'none';
+            document.getElementById('luckyStars').style.display = 'none';
+            document.getElementById('tools').style.display = 'none';
+            document.getElementById('gems').style.display = 'none';
+            document.getElementById('storyBook').style.display = 'none';
+            document.getElementById('eyesDefault').style.display = 'block';
+            document.getElementById('eyesEvil').style.display = 'none';
+            document.getElementById('eyesShy').style.display = 'none';
+            document.getElementById('eyesStar').style.display = 'none';
+            document.getElementById('mouthDefault').style.display = 'block';
+
+            // 宽容/卡人
+            if (!isKuanRong) {
+                document.getElementById('devilHorns').style.display = 'block';
+            } else {
+                document.getElementById('angelWings').style.display = 'block';
+            }
+
+            // 嘴炮/自闭
+            if (isZuiPao) {
+                document.getElementById('bigMouth').style.display = 'block';
+                document.getElementById('mouthDefault').style.display = 'none';
+                document.getElementById('eyesStar').style.display = 'block';
+                document.getElementById('eyesDefault').style.display = 'none';
+            } else {
+                document.getElementById('hoodie').style.display = 'block';
+                document.getElementById('eyesShy').style.display = 'block';
+                document.getElementById('eyesDefault').style.display = 'none';
+            }
+
+            // 好运/运营
+            if (isHaoYun) {
+                document.getElementById('luckyStars').style.display = 'block';
+            } else {
+                document.getElementById('tools').style.display = 'block';
+            }
+
+            // 计分/故事
+            if (!isStory) {
+                document.getElementById('gems').style.display = 'block';
+            } else {
+                document.getElementById('storyBook').style.display = 'block';
+            }
+
+            // 卡人且嘴炮时用冷笑表情
+            if (!isKuanRong && isZuiPao) {
+                document.getElementById('eyesEvil').style.display = 'block';
+                document.getElementById('eyesStar').style.display = 'none';
+                document.getElementById('eyesDefault').style.display = 'none';
+            }
+
+            // 设置MBTI类型（人格名）
+            document.getElementById('mbtiType').textContent = p.name;
+            document.getElementById('personalityTitle').textContent = p.tag;
+            document.getElementById('catchphrase').textContent = randomQuote;
+            document.getElementById('personalityDesc').textContent = p.desc;
+            document.getElementById('bestPartner').textContent = '最佳搭档：' + p.partner;
+
+            // 设置段位徽章颜色
+            rankBadge.style.background = 'linear-gradient(135deg, ' + p.color + ', ' + p.color + '88)';
+            rankBadge.style.color = '#fff';
 
             // 绘制雷达图
-            drawRadarChart(currentMBTI);
+            drawRadarChart(personalityKey);
 
+            // 推荐桌游
             const gameTags = document.getElementById('gameTags');
             gameTags.innerHTML = '';
-            games.forEach(game => {
+            const recommended = pickRecommendedGames(personalityKey);
+            recommended.forEach(game => {
                 const tag = document.createElement('span');
                 tag.className = 'game-tag';
                 tag.textContent = game;
+                tag.style.background = 'linear-gradient(135deg, ' + p.color + '88, ' + p.color + '44)';
+                tag.style.color = p.color;
                 gameTags.appendChild(tag);
             });
 
@@ -1819,6 +2185,33 @@
 
             document.getElementById('quizPage').style.display = 'none';
             document.getElementById('resultPage').style.display = 'flex';
+        }
+
+        // 根据人格推荐桌游
+        function pickRecommendedGames(personalityKey) {
+            const parts = personalityKey.split('-');
+            const isKuanRong = parts[0] === '宽容';
+            const isStory = parts[1] === '故事';
+            const isHaoYun = parts[3] === '好运';
+
+            // 根据人格特征推荐不同桌游
+            if (isKuanRong && !isStory && !isHaoYun) {
+                return pickRandomGames(['璀璨宝石', '七大奇迹：对决', '铁路环游']);
+            } else if (isKuanRong && !isStory && isHaoYun) {
+                return pickRandomGames(['哈铃果铃', '骆驼大赛', 'UNO']);
+            } else if (isKuanRong && isStory && !isHaoYun) {
+                return pickRandomGames(['诡镇奇谈：卡牌版', '忘海传记', '展翅翱翔']);
+            } else if (isKuanRong && isStory && isHaoYun) {
+                return pickRandomGames(['只言片语', '花见小路', '传情画意']);
+            } else if (!isKuanRong && !isStory && !isHaoYun) {
+                return pickRandomGames(['灵迹岛', '重塑火星', '历史巨轮']);
+            } else if (!isKuanRong && !isStory && isHaoYun) {
+                return pickRandomGames(['政变', '拉斯维加斯', '马尼拉']);
+            } else if (!isKuanRong && isStory && !isHaoYun) {
+                return pickRandomGames(['奥丁的盛宴', '伯明翰', '领国者']);
+            } else {
+                return pickRandomGames(['ROOT', '血色狂怒', '帝国曙光']);
+            }
         }
 
         function showProResult() {
@@ -1841,6 +2234,20 @@
             document.getElementById('radarSection').style.display = 'none';
             // 隐藏推荐桌游（段位模式不显示）
             document.querySelector('.recommend-section').style.display = 'none';
+            // 隐藏所有小人配件
+            document.getElementById('devilHorns').style.display = 'none';
+            document.getElementById('angelWings').style.display = 'none';
+            document.getElementById('bigMouth').style.display = 'none';
+            document.getElementById('hoodie').style.display = 'none';
+            document.getElementById('luckyStars').style.display = 'none';
+            document.getElementById('tools').style.display = 'none';
+            document.getElementById('gems').style.display = 'none';
+            document.getElementById('storyBook').style.display = 'none';
+            document.getElementById('eyesDefault').style.display = 'block';
+            document.getElementById('eyesEvil').style.display = 'none';
+            document.getElementById('eyesShy').style.display = 'none';
+            document.getElementById('eyesStar').style.display = 'none';
+            document.getElementById('mouthDefault').style.display = 'block';
 
             // 显示段位专属区域
             document.getElementById('proSection').style.display = 'block';
@@ -1955,19 +2362,22 @@
         function shareResult() {
             let text;
             if (quizMode === 'mbti') {
-                const base = personalityBase[currentMBTI];
-                const gameTags = document.querySelectorAll('.game-tag');
-                const games = Array.from(gameTags).map(tag => tag.textContent);
-                text = `我的桌游MBTI是【${currentMBTI}·${base.title}】！\n推荐桌游：${games.join('、')}\n"${base.quote}"\n\n来测测你的→`;
-            } else {
+                const pKey = currentPersonalityKey;
+                const p = personalityData[pKey];
+                text = `我的桌游隐藏人格是【${p.name}】！\n"${p.tag}"\n\n来测测你的→`;
+            } else if (quizMode === 'pro') {
                 const rank = document.getElementById('mbtiType').textContent;
                 const title = document.getElementById('personalityTitle').textContent;
                 text = `我的桌游段位是【${rank}·${title}】！\n来测测你的→`;
+            } else {
+                const rank = document.getElementById('mbtiType').textContent;
+                const score = document.getElementById('personalityTitle').textContent;
+                text = `我在酸黄瓜桌游猜题挑战中${rank}，${score}！\n来测测你的→`;
             }
 
             if (navigator.share) {
                 navigator.share({
-                    title: '测测你的桌游人格',
+                    title: '解锁你的桌游隐藏人格',
                     text: text,
                     url: window.location.href
                 });
@@ -1985,14 +2395,17 @@
         function copyText() {
             let text;
             if (quizMode === 'mbti') {
-                const base = personalityBase[currentMBTI];
-                const gameTags = document.querySelectorAll('.game-tag');
-                const games = Array.from(gameTags).map(tag => tag.textContent);
-                text = `我的桌游MBTI是【${currentMBTI}·${base.title}】！\n推荐桌游：${games.join('、')}\n"${base.quote}"\n\n📍酸黄瓜桌游俱乐部\n杭州·开了6年的桌游店\n\n#桌游MBTI #酸黄瓜桌游俱乐部`;
-            } else {
+                const pKey = currentPersonalityKey;
+                const p = personalityData[pKey];
+                text = `我的桌游隐藏人格是【${p.name}】！\n"${p.tag}"\n\n📍酸黄瓜桌游俱乐部\n杭州·开了6年的桌游店\n\n#桌游隐藏人格 #酸黄瓜桌游俱乐部`;
+            } else if (quizMode === 'pro') {
                 const rank = document.getElementById('mbtiType').textContent;
                 const title = document.getElementById('personalityTitle').textContent;
                 text = `我的桌游段位是【${rank}·${title}】！\n\n📍酸黄瓜桌游俱乐部\n杭州·开了6年的桌游店\n\n#桌游段位 #酸黄瓜桌游俱乐部`;
+            } else {
+                const rank = document.getElementById('mbtiType').textContent;
+                const score = document.getElementById('personalityTitle').textContent;
+                text = `我在酸黄瓜桌游猜题挑战中${rank}，${score}！\n\n📍酸黄瓜桌游俱乐部\n杭州·开了6年的桌游店\n\n#看图猜桌游 #酸黄瓜桌游俱乐部`;
             }
 
             if (navigator.clipboard) {
